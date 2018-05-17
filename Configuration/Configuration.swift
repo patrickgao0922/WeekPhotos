@@ -7,4 +7,20 @@
 //
 
 import Foundation
+protocol Configuration {
+    var imgurClientId:String? {get}
+}
 
+class ConfigurationImplementation:Configuration {
+    
+    var imgurClientId:String? {
+        guard let google = infoForKey("Google") as? Dictionary<String,String> else {
+            return nil
+        }
+        return google["API Key"]
+    }
+    
+    fileprivate func infoForKey(_ key: String) -> Any? {
+        return (Bundle.main.infoDictionary?[key])
+    }
+}
