@@ -41,5 +41,12 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>Imgur</key>
+	<dict>
+		<key>ID</key>
+		<string>${IMGUR_CLIENT_ID}</string>
+		<key>Secret</key>
+		<string>${IMGUR_CLIENT_SECRET}</string>
+	</dict>
 </dict>
 </plist>
