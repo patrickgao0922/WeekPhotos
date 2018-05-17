@@ -93,8 +93,6 @@
 		969E972220AD466C002F14C2 = {
 			isa = PBXGroup;
 			children = (
-				9664540B20AD79480015822B /* Configuration */,
-				969E974E20AD4679002F14C2 /* Config Files */,
 				969E972D20AD466C002F14C2 /* WeekPhotos */,
 				969E974220AD466E002F14C2 /* WeekPhotosTests */,
 				969E972C20AD466C002F14C2 /* Products */,
@@ -115,6 +113,8 @@
 		969E972D20AD466C002F14C2 /* WeekPhotos */ = {
 			isa = PBXGroup;
 			children = (
+				9664540B20AD79480015822B /* Configuration */,
+				969E974E20AD4679002F14C2 /* Config Files */,
 				969E972E20AD466C002F14C2 /* AppDelegate.swift */,
 				969E973020AD466C002F14C2 /* ViewController.swift */,
 				969E973220AD466C002F14C2 /* Main.storyboard */,
