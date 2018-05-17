@@ -1,0 +1,10 @@
+//
+//  Config.xcconfig
+//  WeekPhotos
+//
+//  Created by Patrick Gao on 17/5/18.
+//  Copyright © 2018 Patrick Gao. All rights reserved.
+//
+#include "../../Pods/Target Support Files/Pods-WeekPhotos/Pods-WeekPhotos.debug.xcconfig"
+IMGUR_CLIENT_ID=<IMGUR_CLIENT_ID>
+IMGUR_CLIENT_SECRET=<IMGUR_CLIENT_SECRET>
