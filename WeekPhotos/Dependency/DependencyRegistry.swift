@@ -18,8 +18,5 @@ class DependencyRegistry {
     }
     
     func registerDependencies() {
-        container.register(Configuration.self) { (r) in
-            ConfigurationImplementation()
-        }.inObjectScope(.container)
     }
 }

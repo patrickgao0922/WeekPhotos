@@ -14,16 +14,13 @@ import Swinject
 
 class ConfigurationTests:QuickSpec {
     override func spec() {
-        let container = Container()
-        let dependencyRegistry = DependencyRegistry(with: container)
-        let configuration = dependencyRegistry.container.resolve(Configuration.self)!
         
         it("Test Imgur ID:") {
-            expect(configuration.imgurClientId).notTo(beNil())
+            expect(Configuration.imgurClientId).notTo(beNil())
         }
         
         it("Test Imgur Secret") {
-            expect(configuration.imgurClientSecret).notTo(beNil())
+            expect(Configuration.imgurClientSecret).notTo(beNil())
         }
     }
 }
