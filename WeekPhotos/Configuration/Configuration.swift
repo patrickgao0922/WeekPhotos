@@ -9,15 +9,23 @@
 import Foundation
 protocol Configuration {
     var imgurClientId:String? {get}
+    var imgurClientSecret:String? {get}
 }
 
 class ConfigurationImplementation:Configuration {
     
     var imgurClientId:String? {
-        guard let google = infoForKey("Google") as? Dictionary<String,String> else {
+        guard let imgur = infoForKey("Imgur") as? Dictionary<String,String> else {
             return nil
         }
-        return google["API Key"]
+        return imgur["ID"]
+    }
+    
+    var imgurClientSecret:String? {
+        guard let imgur = infoForKey("Imgur") as? Dictionary<String,String> else {
+            return nil
+        }
+        return imgur["Secret"]
     }
     
     fileprivate func infoForKey(_ key: String) -> Any? {

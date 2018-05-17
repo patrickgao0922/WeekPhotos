@@ -5,6 +5,6 @@
 //  Created by Patrick Gao on 17/5/18.
 //  Copyright © 2018 Patrick Gao. All rights reserved.
 //
-#include "../Pods/Target Support Files/Pods-WeekPhotos/Pods-WeekPhotos.debug.xcconfig"
+#include "../../Pods/Target Support Files/Pods-WeekPhotos/Pods-WeekPhotos.debug.xcconfig"
 IMGUR_CLIENT_ID=2e56000dc5c1f7d
 IMGUR_CLIENT_SECRET=7f79589f705f7358377637ca4d0bbd95e12216fb
