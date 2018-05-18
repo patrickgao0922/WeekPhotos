@@ -21,6 +21,10 @@ class ImgurModelLayerImplementation:ImgurModelLayer {
         self.translationLayer = translationLayer
     }
     
+    /// Obtain all top images of the week based on the query
+    ///
+    /// - Parameter query: query string
+    /// - Returns: Single Trait with image array result
     func searchTopGalaries(query:String) -> Single<[Image]>{
         return networkLayer.searchGalaries(sort: .top, window: .week, page: nil, query: query)
             .map { (response) -> [Galary] in
@@ -32,10 +36,8 @@ class ImgurModelLayerImplementation:ImgurModelLayer {
         }
             .map { (galaries) -> [Image] in
                 var images:[Image] = []
-                for galary in galaries {
-                    if let galaryImages = galary.images {
-                        images.append(contentsOf: galaryImages)
-                    }
+                for galary in galaries where galary.images != nil && galary.images!.count != 0 {
+                    images.append(contentsOf: galary.images!)
                 }
                 return images
         }
