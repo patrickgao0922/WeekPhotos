@@ -4,7 +4,7 @@
 //
 //  Created by Patrick Gao on 18/5/18.
 //  Copyright © 2018 Patrick Gao. All rights reserved.
-//
+//#imageLiteral(resourceName: "Technical Exercise Instructions - Mobile Dev.pdf")
 
 import Foundation
 import RxSwift

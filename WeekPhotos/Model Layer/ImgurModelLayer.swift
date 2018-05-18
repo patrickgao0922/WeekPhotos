@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 protocol ImgurModelLayer {
-    func searchTopGalaries(query:String) -> Single<[Image]>
+    func searchTopGalaries(query:String) -> Single<[Galary]>
 }
 
 class ImgurModelLayerImplementation:ImgurModelLayer {
@@ -25,7 +25,7 @@ class ImgurModelLayerImplementation:ImgurModelLayer {
     ///
     /// - Parameter query: query string
     /// - Returns: Single Trait with image array result
-    func searchTopGalaries(query:String) -> Single<[Image]>{
+    func searchTopGalaries(query:String) -> Single<[Galary]>{
         return networkLayer.searchGalaries(sort: .top, window: .week, page: nil, query: query)
             .map { (response) -> [Galary] in
                 let data = response.data
@@ -33,13 +33,6 @@ class ImgurModelLayerImplementation:ImgurModelLayer {
                     return []
                 }
                 return galaries
-        }
-            .map { (galaries) -> [Image] in
-                var images:[Image] = []
-                for galary in galaries where galary.images != nil && galary.images!.count != 0 {
-                    images.append(contentsOf: galary.images!)
-                }
-                return images
         }
         
     }

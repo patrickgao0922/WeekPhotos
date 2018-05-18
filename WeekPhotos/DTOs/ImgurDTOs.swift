@@ -16,7 +16,12 @@ struct GalaryResponse:Codable {
 
 struct Galary:Codable{
     var id:String?
+    var cover: String?
     var images:[Image]?
+    var topicId: Int?
+    var points:Int?
+    var score:Int?
+    var link:String?
 }
 
 struct Image:Codable {

@@ -28,7 +28,7 @@ class ImgurModelLayerTests:QuickSpec {
             
             switch result {
             case .completed(let elements):
-                expect(elements[0].count).to(equal(46))
+                expect(elements[0].count).to(equal(36))
             case .failed(_, let error):
                 fail(error.localizedDescription)
             }
