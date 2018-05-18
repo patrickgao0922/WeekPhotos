@@ -8,6 +8,7 @@
 
 import Foundation
 import Quick
+import RxBlocking
 import Nimble
 import Swinject
 @testable import WeekPhotos
@@ -23,6 +24,17 @@ class ImgurNetworkLayerTests:QuickSpec {
             dependencyRegistry = DependencyRegistry(with: container)
             networkLayer = dependencyRegistry.container.resolve(ImgurNetworkLayer.self)
             
+        }
+        
+        it("Get galary response successfully") {
+            let result = networkLayer.searchTopGalaries(query: "usa").toBlocking().materialize()
+            
+            switch result {
+            case .completed(let responses):
+                expect(responses[0].statusCode).to(equal(200))
+            case .failed(_, let error):
+                fail(error.localizedDescription)
+            }
         }
     }
 }

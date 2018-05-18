@@ -11,7 +11,6 @@
 		9664541020AD7A7D0015822B /* DependencyRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9664540F20AD7A7D0015822B /* DependencyRegistry.swift */; };
 		9664541120AD7C030015822B /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9664540C20AD79660015822B /* Configuration.swift */; };
 		9664541320AD7D2E0015822B /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9664540C20AD79660015822B /* Configuration.swift */; };
-		9664541420AD7DCB0015822B /* DependencyRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9664540F20AD7A7D0015822B /* DependencyRegistry.swift */; };
 		9695926520AE3FFA00483EC7 /* ImgurDTOs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9695926420AE3FFA00483EC7 /* ImgurDTOs.swift */; };
 		9695926720AE442900483EC7 /* ImgurNetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9695926620AE442900483EC7 /* ImgurNetworkLayer.swift */; };
 		9695926820AE457F00483EC7 /* ImgurRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9664541620AD81150015822B /* ImgurRouter.swift */; };
@@ -423,7 +422,6 @@
 				9664540A20AD792E0015822B /* ConfigurationTests.swift in Sources */,
 				969E974420AD466E002F14C2 /* WeekPhotosTests.swift in Sources */,
 				9695926A20AE4B6600483EC7 /* ImgurRouterTests.swift in Sources */,
-				9664541420AD7DCB0015822B /* DependencyRegistry.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
