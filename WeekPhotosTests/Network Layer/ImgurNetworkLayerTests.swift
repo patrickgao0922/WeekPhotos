@@ -27,7 +27,7 @@ class ImgurNetworkLayerTests:QuickSpec {
         }
         
         it("Get galary response successfully") {
-            let result = networkLayer.searchTopGalaries(query: "usa").toBlocking().materialize()
+            let result = networkLayer.searchGalaries(sort: .top, window: .week, page: nil, query: "usa").toBlocking().materialize()
             
             switch result {
             case .completed(let responses):
