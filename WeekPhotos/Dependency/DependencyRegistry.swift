@@ -27,7 +27,7 @@ class DependencyRegistry {
         }
         
         container.register(ImgurModelLayer.self) { (r) in
-            ImgurModelLayerImplementation()
+            ImgurModelLayerImplementation(with: r.resolve(ImgurNetworkLayer.self)!, translationLayer: r.resolve(ImgurTranslationLayer.self)!)
         }
     }
 }
