@@ -16,6 +16,7 @@
 		9695926720AE442900483EC7 /* ImgurNetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9695926620AE442900483EC7 /* ImgurNetworkLayer.swift */; };
 		9695926820AE457F00483EC7 /* ImgurRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9664541620AD81150015822B /* ImgurRouter.swift */; };
 		9695926A20AE4B6600483EC7 /* ImgurRouterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9695926920AE4B6600483EC7 /* ImgurRouterTests.swift */; };
+		9695926E20AE569500483EC7 /* ImgurNetworkLayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9695926D20AE569500483EC7 /* ImgurNetworkLayerTests.swift */; };
 		969E972F20AD466C002F14C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969E972E20AD466C002F14C2 /* AppDelegate.swift */; };
 		969E973120AD466C002F14C2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969E973020AD466C002F14C2 /* ViewController.swift */; };
 		969E973420AD466C002F14C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 969E973220AD466C002F14C2 /* Main.storyboard */; };
@@ -47,6 +48,7 @@
 		9695926420AE3FFA00483EC7 /* ImgurDTOs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgurDTOs.swift; sourceTree = "<group>"; };
 		9695926620AE442900483EC7 /* ImgurNetworkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgurNetworkLayer.swift; sourceTree = "<group>"; };
 		9695926920AE4B6600483EC7 /* ImgurRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgurRouterTests.swift; sourceTree = "<group>"; };
+		9695926D20AE569500483EC7 /* ImgurNetworkLayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgurNetworkLayerTests.swift; sourceTree = "<group>"; };
 		969E972B20AD466C002F14C2 /* WeekPhotos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeekPhotos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		969E972E20AD466C002F14C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		969E973020AD466C002F14C2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				9695926920AE4B6600483EC7 /* ImgurRouterTests.swift */,
+				9695926D20AE569500483EC7 /* ImgurNetworkLayerTests.swift */,
 			);
 			path = "Network Layer";
 			sourceTree = "<group>";
@@ -416,6 +419,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9664541320AD7D2E0015822B /* Configuration.swift in Sources */,
+				9695926E20AE569500483EC7 /* ImgurNetworkLayerTests.swift in Sources */,
 				9664540A20AD792E0015822B /* ConfigurationTests.swift in Sources */,
 				969E974420AD466E002F14C2 /* WeekPhotosTests.swift in Sources */,
 				9695926A20AE4B6600483EC7 /* ImgurRouterTests.swift in Sources */,

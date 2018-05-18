@@ -18,5 +18,8 @@ class DependencyRegistry {
     }
     
     func registerDependencies() {
+        container.register(ImgurNetworkLayer.self) { (r) in
+            ImgurNetworkLayerImplementation()
+        }
     }
 }
