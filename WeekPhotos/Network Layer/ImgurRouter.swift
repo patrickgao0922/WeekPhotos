@@ -74,7 +74,7 @@ enum ImgurRouter:TargetType {
     var sampleData: Data {
         switch self {
         case .galary(_,_,_,_):
-            return "{\"data\":{\"id\": 100, \"images\": []\"},\"success\":true,\"status\":200}".data(using: .utf8)!
+            return Configuration.loadTestJsonFile!
         }
     }
     var headers: [String : String]? {

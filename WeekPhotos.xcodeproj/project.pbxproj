@@ -20,6 +20,7 @@
 		9695927420AE647100483EC7 /* ImgurTranslationLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9695927320AE647100483EC7 /* ImgurTranslationLayer.swift */; };
 		9695927720AE6D7900483EC7 /* ImgurTranslationLayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9695927620AE6D7900483EC7 /* ImgurTranslationLayerTests.swift */; };
 		9695927A20AE7C8500483EC7 /* ImgurModelLayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9695927920AE7C8500483EC7 /* ImgurModelLayerTests.swift */; };
+		9695927E20AE9A5C00483EC7 /* dump_test_response.json in Resources */ = {isa = PBXBuildFile; fileRef = 9695927D20AE9A5B00483EC7 /* dump_test_response.json */; };
 		969E972F20AD466C002F14C2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969E972E20AD466C002F14C2 /* AppDelegate.swift */; };
 		969E973120AD466C002F14C2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 969E973020AD466C002F14C2 /* ViewController.swift */; };
 		969E973420AD466C002F14C2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 969E973220AD466C002F14C2 /* Main.storyboard */; };
@@ -56,6 +57,7 @@
 		9695927320AE647100483EC7 /* ImgurTranslationLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgurTranslationLayer.swift; sourceTree = "<group>"; };
 		9695927620AE6D7900483EC7 /* ImgurTranslationLayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgurTranslationLayerTests.swift; sourceTree = "<group>"; };
 		9695927920AE7C8500483EC7 /* ImgurModelLayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgurModelLayerTests.swift; sourceTree = "<group>"; };
+		9695927D20AE9A5B00483EC7 /* dump_test_response.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dump_test_response.json; sourceTree = "<group>"; };
 		969E972B20AD466C002F14C2 /* WeekPhotos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeekPhotos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		969E972E20AD466C002F14C2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		969E973020AD466C002F14C2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 		969E972D20AD466C002F14C2 /* WeekPhotos */ = {
 			isa = PBXGroup;
 			children = (
+				9695927D20AE9A5B00483EC7 /* dump_test_response.json */,
 				9695927220AE645200483EC7 /* Translation Layer */,
 				9695926F20AE5BD100483EC7 /* Model Layer */,
 				9695926320AE3FDF00483EC7 /* DTOs */,
@@ -334,6 +337,7 @@
 			files = (
 				969E973920AD466E002F14C2 /* LaunchScreen.storyboard in Resources */,
 				969E973620AD466E002F14C2 /* Assets.xcassets in Resources */,
+				9695927E20AE9A5C00483EC7 /* dump_test_response.json in Resources */,
 				969E973420AD466C002F14C2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
