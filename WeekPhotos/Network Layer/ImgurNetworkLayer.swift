@@ -11,7 +11,7 @@ import RxSwift
 import Moya
 
 protocol ImgurNetworkLayer {
-    func searchTopGalaries(query:String) -> Single<Response>
+    func searchGalaries(sort:ImgurRouter.Sort?, window:ImgurRouter.Window? ,page:Int?, query:String) -> Single<Response>
 }
 
 class ImgurNetworkLayerImplementation:ImgurNetworkLayer {
@@ -20,7 +20,7 @@ class ImgurNetworkLayerImplementation:ImgurNetworkLayer {
         self.provider = MoyaProvider<ImgurRouter>()
     }
     
-    func searchTopGalaries(query:String) -> Single<Response> {
-        return provider.rx.request(ImgurRouter.galary(sort: .time, window: .week, page: 1, q: query))
+    func searchGalaries(sort:ImgurRouter.Sort? = .top, window:ImgurRouter.Window? = .all,page:Int? = nil, query:String) -> Single<Response> {
+        return provider.rx.request(ImgurRouter.galary(sort: sort, window: window, page: page, q: query))
     }
 }
