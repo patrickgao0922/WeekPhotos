@@ -27,11 +27,17 @@ struct Galary:Codable{
     var link:String?
     
     enum CodingKeys:String, CodingKey {
+        case id
+        case cover
+        case images
+        case points
+        case score
+        case link
         case topicId = "topic_id"
         case coverWidth = "cover_width"
         case coverHeight = "cover_height"
         case date = "datetime"
-        
+
     }
 }
 
@@ -53,6 +59,14 @@ struct Image:Codable {
     var link: String?
     
     enum CodingKeys:String, CodingKey {
+        case id
+        case title
+        case description
+        case type
+        case width
+        case height
+        case size
+        case link
         case date = "datetime"
     }
 }

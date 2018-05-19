@@ -34,6 +34,13 @@ class ImgurModelLayerImplementation:ImgurModelLayer {
                 }
                 return galaries
         }
-        
     }
+    
+//    func obtainImage(by imageHash:String) -> Single<Image> {
+//        return networkLayer.obtainImage(by: imageHash)
+//            .map({ (response) -> Image in
+//                let data = response.data
+//                guard let image
+//            })
+//    }
 }

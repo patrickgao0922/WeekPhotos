@@ -15,7 +15,6 @@ import Nimble
 class ImgurTranslationLayerTests:QuickSpec {
     override func spec() {
         
-        var data:Data!
         var container:Container!
         var dependencyRegistry:DependencyRegistry!
         var translationLayer:ImgurTranslationLayer!
@@ -24,13 +23,27 @@ class ImgurTranslationLayerTests:QuickSpec {
             container = Container()
             dependencyRegistry = DependencyRegistry(with: container)
             translationLayer = dependencyRegistry.container.resolve(ImgurTranslationLayer.self)!
-            data = ImgurRouter.galary(sort: nil, window: nil, page: nil, q: "").sampleData
         }
         it("translate data into galary dto") {
+            
+            let data:Data! = ImgurRouter.galary(sort: nil, window: nil, page: nil, q: "").sampleData
             let galaryResponse = translationLayer.translateDataIntoGalaryResponseDTO(data: data)
             expect(galaryResponse).toNot(beNil())
             expect(galaryResponse?.status).notTo(beNil())
             expect(galaryResponse!.status).to(equal(200))
+            expect(galaryResponse!.data![0].images![0].id).notTo(beNil())
+        }
+        
+        it("translate data into image dto") {
+            let data:Data = ImgurRouter.image(imageHash: "").sampleData
+            let imageResponse = translationLayer.translateDataIntoImageResponseDTO(data: data)
+            
+            expect(imageResponse).toNot(beNil())
+            expect(imageResponse!.status).to(equal(200))
+            expect(imageResponse!.data).toNot(beNil())
+            expect(imageResponse!.data!.id!).to(equal("MepwY08"))
+            expect(imageResponse!.data!.date).notTo(beNil())
+            expect(imageResponse!.data!.date!.timeIntervalSince1970).to(equal(1526055953))
         }
     }
 }
