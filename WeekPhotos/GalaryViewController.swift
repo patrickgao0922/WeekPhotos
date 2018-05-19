@@ -8,8 +8,12 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class GalaryViewController: UIViewController {
+ 
+    
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet var toggle: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

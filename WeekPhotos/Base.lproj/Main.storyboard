@@ -10,17 +10,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Galary View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="WeekPhotos" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="GalaryViewController" customModule="WeekPhotos" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="b8q-1M-T22">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="455" id="7sf-8I-YRS">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="galaryCell" rowHeight="455" id="7sf-8I-YRS" customClass="GalaryTableViewCell" customModule="WeekPhotos" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="455"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7sf-8I-YRS" id="qRX-U7-wdM">
@@ -34,7 +33,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Ds-Tm-OQB">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="347"/>
+                                            <rect key="frame" x="0.0" y="11" width="375" height="336"/>
                                         </imageView>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JWV-H9-3k7">
                                             <rect key="frame" x="16" y="423.5" width="342.5" height="20.5"/>
@@ -63,7 +62,7 @@
                                         <constraint firstItem="3Ds-Tm-OQB" firstAttribute="leading" secondItem="qRX-U7-wdM" secondAttribute="leading" id="bIQ-FW-HyG"/>
                                         <constraint firstItem="GAV-Ds-l30" firstAttribute="trailing" secondItem="qRX-U7-wdM" secondAttribute="trailingMargin" id="bLi-GD-n9e"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="JWV-H9-3k7" secondAttribute="trailing" id="cfP-cI-eyQ"/>
-                                        <constraint firstItem="3Ds-Tm-OQB" firstAttribute="top" secondItem="qRX-U7-wdM" secondAttribute="top" id="dtG-uU-u2J"/>
+                                        <constraint firstItem="3Ds-Tm-OQB" firstAttribute="top" secondItem="qRX-U7-wdM" secondAttribute="topMargin" id="dtG-uU-u2J"/>
                                         <constraint firstItem="JWV-H9-3k7" firstAttribute="leading" secondItem="qRX-U7-wdM" secondAttribute="leadingMargin" id="idG-wF-KtA"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -80,8 +79,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="searchDisplayController" destination="sVp-jA-944" id="Ng5-pK-bOY"/>
+                        <outlet property="tableView" destination="b8q-1M-T22" id="fnL-0E-MlF"/>
+                        <outlet property="toggle" destination="plA-gD-BdV" id="BgI-Se-GzB"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <searchDisplayController id="sVp-jA-944">
                     <connections>
                         <outlet property="delegate" destination="BYZ-38-t0r" id="689-nh-SPs"/>
