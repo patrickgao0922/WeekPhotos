@@ -15,6 +15,7 @@ class DependencyRegistry {
     init(with container:Container) {
         self.container = container
         registerDependencies()
+        registerViewModels()
     }
     
     func registerDependencies() {
@@ -28,6 +29,12 @@ class DependencyRegistry {
         
         container.register(ImgurModelLayer.self) { (r) in
             ImgurModelLayerImplementation(with: r.resolve(ImgurNetworkLayer.self)!, translationLayer: r.resolve(ImgurTranslationLayer.self)!)
+        }
+    }
+    
+    func registerViewModels() {
+        container.register(GalaryTableViewModel.self) { (r) in
+            GalaryTableViewModelImplementation(with: r.resolve(ImgurModelLayer.self)!)
         }
     }
 }
