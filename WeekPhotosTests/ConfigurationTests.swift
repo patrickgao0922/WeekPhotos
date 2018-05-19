@@ -22,9 +22,5 @@ class ConfigurationTests:QuickSpec {
         it("Test Imgur Secret") {
             expect(Configuration.imgurClientSecret).notTo(beNil())
         }
-        
-        it("Load test json file") {
-            expect (Configuration.loadTestJsonFile).notTo(beNil())
-        }
     }
 }

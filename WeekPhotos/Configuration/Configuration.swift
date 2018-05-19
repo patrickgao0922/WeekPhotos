@@ -23,18 +23,6 @@ class Configuration {
         return imgur["Secret"]
     }
     
-    static var loadTestJsonFile:Data? {
-        guard let path = Bundle.main.path(forResource: "dump_test_response", ofType: "json") else {
-            return nil
-        }
-        do {
-            return try Data(contentsOf: URL(fileURLWithPath: path), options: Data.ReadingOptions.alwaysMapped)
-        }
-        catch {
-            return nil
-        }
-    }
-    
     fileprivate static func infoForKey(_ key: String) -> Any? {
         return (Bundle.main.infoDictionary?[key])
     }

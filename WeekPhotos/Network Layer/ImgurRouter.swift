@@ -28,6 +28,7 @@ enum ImgurRouter:TargetType {
     }
     
     case galary(sort:Sort?, window:Window?, page:Int?, q:String)
+    case image(imageHash:String)
     
     var baseURL: URL {
         return URL(string: "https://api.imgur.com/3")!
@@ -54,12 +55,16 @@ enum ImgurRouter:TargetType {
                 pathString += "/\(page)"
             }
             return pathString
+        case .image(let imageHash):
+            return "/\(imageHash)"
         }
     }
     
     var method: Moya.Method {
         switch self {
         case .galary:
+            return .get
+        case .image:
             return .get
         }
     }
@@ -68,13 +73,17 @@ enum ImgurRouter:TargetType {
         switch self {
         case .galary(_,_,_,let q):
             return .requestParameters(parameters:["q_any":q],encoding:URLEncoding.queryString)
+        case .image:
+            return .requestPlain
         }
     }
     
     var sampleData: Data {
         switch self {
         case .galary(_,_,_,_):
-            return Configuration.loadTestJsonFile!
+            return JsonFile.galary.jsonFileFile!
+        case .image:
+            return JsonFile.image.jsonFileFile!
         }
     }
     var headers: [String : String]? {
