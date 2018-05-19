@@ -56,7 +56,7 @@ enum ImgurRouter:TargetType {
             }
             return pathString
         case .image(let imageHash):
-            return "/\(imageHash)"
+            return "/image/\(imageHash)"
         }
     }
     

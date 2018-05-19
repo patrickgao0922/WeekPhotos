@@ -1,5 +1,5 @@
 //
-//  ImgurRouterTests.swift
+//  ImgurgalaryrTests.swift
 //  WeekPhotosTests
 //
 //  Created by Patrick Gao on 18/5/18.
@@ -12,33 +12,69 @@ import Nimble
 
 @testable import WeekPhotos
 
-class ImgurRouterTests:QuickSpec {
+class ImgurgalaryrTests:QuickSpec {
     override func spec() {
-        var route:ImgurRouter!
+        var galary:ImgurRouter!
+        var image:ImgurRouter!
         beforeEach {
-            route = ImgurRouter.galary(sort: .top, window: .week, page: 1, q: "test")
+            galary = ImgurRouter.galary(sort: .top, window: .week, page: 1, q: "test")
+            
+            image = .image(imageHash: "MepwY08")
         }
         
-        it("uses correct baseURl:") {
-            expect(route.baseURL).to(equal(URL(string: "https://api.imgur.com/3")))
+        describe("galary route") {
+            it("uses correct baseURl:") {
+                expect(galary.baseURL).to(equal(URL(string: "https://api.imgur.com/3")))
+            }
+            
+            it("use correct method") {
+                expect(galary.method.rawValue).to(equal("GET"))
+            }
+            
+            it("uses correct path") {
+                expect(galary.path).to(equal("/gallery/search/top/week/1"))
+            }
+            
+            it("uses correct parameters") {
+                if case let .requestParameters(parameters: parameters, encoding: _) = galary.task {
+                    let query = parameters["q_any"] as? String
+                    expect(query).toNot(beNil())
+                    expect(query!).to(equal("test"))
+                }
+            }
+            
+            it("contains Authorization") {
+                let authentication = galary.headers?["Authorization"]
+                
+                expect(authentication).notTo(beNil())
+            }
         }
-        
-        it("uses correct path") {
-            expect(route.path).to(equal("/gallery/search/top/week/1"))
-        }
-        
-        it("uses correct parameters") {
-            if case let .requestParameters(parameters: parameters, encoding: _) = route.task {
-                let query = parameters["q_any"] as? String
-                expect(query).toNot(beNil())
-                expect(query!).to(equal("test"))
+        describe("image route") {
+            it("uses correct baseURl:") {
+                expect(image.baseURL).to(equal(URL(string: "https://api.imgur.com/3")))
+            }
+            
+            it("uses correct path") {
+                expect(image.path).to(equal("/image/MepwY08"))
+            }
+            
+            it("use correct method") {
+                expect(image.method.rawValue).to(equal("GET"))
+            }
+//            it("uses correct parameters") {
+//                if case let .requestParameters(parameters: parameters, encoding: _) = galary.task {
+//                    let query = parameters["q_any"] as? String
+//                    expect(query).toNot(beNil())
+//                    expect(query!).to(equal("test"))
+//                }
+//            }
+            
+            it("contains Authorization") {
+                let authentication = image.headers?["Authorization"]
+                
+                expect(authentication).notTo(beNil())
             }
         }
         
-        it("contains Authorization") {
-            let authentication = route.headers?["Authorization"]
-            
-            expect(authentication).notTo(beNil())
-        }
     }
 }
