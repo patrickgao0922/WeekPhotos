@@ -11,6 +11,7 @@ import RxSwift
 
 protocol ImgurModelLayer {
     func searchTopGalaries(query:String) -> Single<[Galary]>
+    func obtainImage(by imageHash:String) -> Single<Image?>
 }
 
 class ImgurModelLayerImplementation:ImgurModelLayer {
@@ -36,11 +37,15 @@ class ImgurModelLayerImplementation:ImgurModelLayer {
         }
     }
     
-//    func obtainImage(by imageHash:String) -> Single<Image> {
-//        return networkLayer.obtainImage(by: imageHash)
-//            .map({ (response) -> Image in
-//                let data = response.data
-//                guard let image
-//            })
-//    }
+    func obtainImage(by imageHash:String) -> Single<Image?> {
+        return networkLayer.obtainImage(by: imageHash)
+            .map({ (response) -> Image? in
+                let data = response.data
+                guard let imageResponse = self.translationLayer.translateDataIntoImageResponseDTO(data: data) else {
+                   return nil
+                }
+                return imageResponse.data
+
+            })
+    }
 }

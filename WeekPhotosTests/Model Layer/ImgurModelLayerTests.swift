@@ -23,15 +23,29 @@ class ImgurModelLayerTests:QuickSpec {
             modelLayer = dependencyRegistry.container.resolve(ImgurModelLayer.self)
         }
         
-        it("fetch images") {
+        it("fetch galaries") {
             let result = modelLayer.searchTopGalaries(query: "usa").toBlocking().materialize()
             
             switch result {
             case .completed(let elements):
-                expect(elements[0].count).to(equal(36))
+                expect(elements[0].count).notTo(equal(0))
             case .failed(_, let error):
                 fail(error.localizedDescription)
             }
         }
+        
+        it("fetch single image") {
+            let result = modelLayer.obtainImage(by: "MepwY08").toBlocking().materialize()
+            
+            switch result {
+            case .completed(let elements):
+                expect(elements[0]).notTo(beNil())
+                expect(elements[0]!.id).notTo(beNil())
+                expect(elements[0]!.id!).to(equal("MepwY08"))
+            case .failed(_, let error):
+                fail(error.localizedDescription)
+            }
+        }
+        
     }
 }
