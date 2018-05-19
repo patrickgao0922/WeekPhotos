@@ -17,21 +17,34 @@ struct GalaryResponse:Codable {
 struct Galary:Codable{
     var id:String?
     var cover: String?
+    var coverWidth: Int?
+    var coverHeight: Int?
     var images:[Image]?
     var topicId: Int?
     var points:Int?
     var score:Int?
     var link:String?
+    
+    enum CodingKeys:String, CodingKey {
+        case topicId = "topic_id"
+        case coverWidth = "cover_width"
+        case coverHeight = "cover_height"
+        
+    }
 }
 
 struct Image:Codable {
     var id: String?
     var title: String?
     var description: String?
-    var datetime: Date?
+    var date: Date?
     var type: String?
     var width: Int?
     var height: Int?
     var size: Int?
     var link: String?
+    
+    enum CodingKeys:String, CodingKey {
+        case date = "datetime"
+    }
 }

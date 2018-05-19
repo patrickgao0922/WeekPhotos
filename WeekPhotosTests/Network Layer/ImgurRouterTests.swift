@@ -61,13 +61,6 @@ class ImgurgalaryrTests:QuickSpec {
             it("use correct method") {
                 expect(image.method.rawValue).to(equal("GET"))
             }
-//            it("uses correct parameters") {
-//                if case let .requestParameters(parameters: parameters, encoding: _) = galary.task {
-//                    let query = parameters["q_any"] as? String
-//                    expect(query).toNot(beNil())
-//                    expect(query!).to(equal("test"))
-//                }
-//            }
             
             it("contains Authorization") {
                 let authentication = image.headers?["Authorization"]
