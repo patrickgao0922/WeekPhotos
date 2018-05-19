@@ -21,6 +21,8 @@ class GalaryTableViewModelImplementation:GalaryTableViewModel {
     fileprivate var modelLayer:ImgurModelLayer
     fileprivate var galaries:Variable<[Galary]>
     
+    fileprivate var disposeBag:DisposeBag
+    
     var galariesDriver: Driver<[Galary]>
     
     init(with modelLayer:ImgurModelLayer) {
@@ -29,11 +31,20 @@ class GalaryTableViewModelImplementation:GalaryTableViewModel {
         cellViewModels = []
         
 //        Setup observables
+        disposeBag = DisposeBag()
         galariesDriver = galaries.asDriver()
     }
     
     func fetchGalaries(by query:String) {
         modelLayer.searchTopGalaries(query: query)
+            .subscribe { (single) in
+                switch single {
+                case .success(let galaries):
+                    self.galaries.value = galaries
+                case .error(_):
+                    break
+                }
+        }.disposed(by: disposeBag)
     }
 }
 
