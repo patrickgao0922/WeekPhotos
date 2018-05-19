@@ -19,6 +19,7 @@ struct Galary:Codable{
     var cover: String?
     var coverWidth: Int?
     var coverHeight: Int?
+    var date:Date?
     var images:[Image]?
     var topicId: Int?
     var points:Int?
@@ -29,8 +30,15 @@ struct Galary:Codable{
         case topicId = "topic_id"
         case coverWidth = "cover_width"
         case coverHeight = "cover_height"
+        case date = "datetime"
         
     }
+}
+
+struct ImageResponse:Codable {
+    var data:Image?
+    var status:Int?
+    var success:Bool?
 }
 
 struct Image:Codable {

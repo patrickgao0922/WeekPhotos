@@ -36,5 +36,16 @@ class ImgurNetworkLayerTests:QuickSpec {
                 fail(error.localizedDescription)
             }
         }
+        
+        it("get image response successfully") {
+            let result = networkLayer.obtainImage(by: "MepwY08").toBlocking().materialize()
+            
+            switch result {
+            case .completed(let elements):
+                expect(elements[0].statusCode).to(equal(200))
+            case .failed(_, let error):
+                fail(error.localizedDescription)
+            }
+        }
     }
 }
