@@ -15,6 +15,9 @@ target 'WeekPhotos' do
   pod 'RxCocoa'
   pod 'RxOptional'
   pod 'Moya/RxSwift'
+  
+  # Gif
+  
 
 
   def testing_pods

@@ -35,6 +35,9 @@
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3Ds-Tm-OQB">
                                             <rect key="frame" x="0.0" y="11" width="375" height="336"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="336" id="9DO-db-RQ4"/>
+                                            </constraints>
                                         </imageView>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JWV-H9-3k7">
                                             <rect key="frame" x="16" y="423.5" width="342.5" height="20.5"/>
@@ -56,6 +59,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="GAV-Ds-l30" firstAttribute="top" secondItem="3Ds-Tm-OQB" secondAttribute="bottom" constant="8" id="3rm-NI-w7C"/>
+                                        <constraint firstItem="3Ds-Tm-OQB" firstAttribute="width" secondItem="qRX-U7-wdM" secondAttribute="width" id="9Ux-ww-Ybi"/>
                                         <constraint firstAttribute="trailing" secondItem="3Ds-Tm-OQB" secondAttribute="trailing" id="J54-WS-CjU"/>
                                         <constraint firstItem="JWV-H9-3k7" firstAttribute="top" secondItem="GAV-Ds-l30" secondAttribute="bottom" constant="8" id="QYv-2y-Tvt"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="JWV-H9-3k7" secondAttribute="bottom" id="RBm-9G-wVq"/>
@@ -71,6 +75,7 @@
                                     <outlet property="additionalImageCountLabel" destination="pNu-LJ-ghV" id="xZ7-iJ-7eI"/>
                                     <outlet property="dateLabel" destination="cr8-gj-dxU" id="IC3-Dj-X3L"/>
                                     <outlet property="galaryImageView" destination="3Ds-Tm-OQB" id="Y2r-IX-2v3"/>
+                                    <outlet property="imageHeightConstraint" destination="9DO-db-RQ4" id="d0P-X4-1MD"/>
                                     <outlet property="titleLabel" destination="GAV-Ds-l30" id="aee-Ys-hzu"/>
                                 </connections>
                             </tableViewCell>

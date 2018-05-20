@@ -33,7 +33,7 @@ class DependencyRegistry {
         
         container.register(ImageDownloader.self) { (r) in
             ImageDownloaderImplementation()
-            }.inObjectScope(.container)
+            }
     }
     
     private func registerViewModels() {

@@ -102,6 +102,7 @@ extension GalaryViewController {
         
         self.viewModel.cellViewModels.asDriver().asObservable().subscribe(onNext: { (_) in
             self.tableView.reloadData()
+            self.startDownloadImagesOnScreen()
         }).disposed(by: disposeBag)
     }
 }

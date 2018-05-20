@@ -67,6 +67,7 @@ class GalaryTableViewCellViewModelImplementation:GalaryTableViewCellViewModel{
     
     func startDownloadImage() {
         if needDownloadImage {
+            needDownloadImage = false
             guard galary.images != nil && galary.images!.count != 0 , let imageURL = galary.images?[0].link else {
                 return
             }

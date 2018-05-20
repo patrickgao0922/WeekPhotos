@@ -13,6 +13,8 @@ class GalaryTableViewCell: UITableViewCell {
     
     fileprivate var viewModel:GalaryTableViewCellViewModel!
 
+    
+    @IBOutlet var imageHeightConstraint: NSLayoutConstraint!
     @IBOutlet var galaryImageView: UIImageView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
@@ -39,6 +41,7 @@ class GalaryTableViewCell: UITableViewCell {
         disposeBag = DisposeBag()
 //        self.additionalImageCountLabel.text = self.viewModel.additionalImageCount
         self.galaryImageView.image = nil
+        
         if viewModel.additionalImageCount != 0 {
             additionalImageCountLabel.isHidden = false
             additionalImageCountLabel.text = "\(viewModel.additionalImageCount) more images"
@@ -57,8 +60,9 @@ class GalaryTableViewCell: UITableViewCell {
         
         let height = size.height / factor
         
-        galaryImageView.heightAnchor.constraint(equalToConstant: height).isActive = true
-        galaryImageView.widthAnchor.constraint(equalToConstant: width).isActive = true
+        
+        imageHeightConstraint.constant = height
+//        galaryImageView.widthAnchor.constraint(equalToConstant: width).isActive = true
         
     }
     
