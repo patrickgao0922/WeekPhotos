@@ -42,6 +42,8 @@ class GalaryTableViewModelImplementation:GalaryTableViewModel {
         
         toggleEnabled = Variable<Bool>(false)
         query = Variable<String?>(nil)
+        
+        setupObservables()
     }
     
     func fetchGalaries(by query:String) {
@@ -60,6 +62,12 @@ class GalaryTableViewModelImplementation:GalaryTableViewModel {
 }
 
 extension GalaryTableViewModelImplementation {
-   
+    func setupObservables() {
+        query.asObservable().subscribe(onNext: { (query) in
+            if let query = query {
+                self.fetchGalaries(by: query)
+            }
+        }).disposed(by: disposeBag)
+    }
 }
 

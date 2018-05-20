@@ -27,7 +27,7 @@ class GalaryViewController: UIViewController {
         self.tableView.dataSource = self
         self.tableView.delegate  = self
         setupUI()
-//        setupObservable()
+        setupObservable()
         
     
     }
@@ -73,6 +73,10 @@ extension GalaryViewController {
 extension GalaryViewController {
     func setupObservable() {
         self.searchController.searchBar.rx.text.asDriver().drive(viewModel.query)
+        
+        self.viewModel.cellViewModels.asDriver().asObservable().subscribe(onNext: { (_) in
+            self.tableView.reloadData()
+        })
     }
 }
 
