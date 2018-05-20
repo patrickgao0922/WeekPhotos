@@ -7,15 +7,19 @@
 //
 
 import UIKit
+import SwinjectStoryboard
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    static var dependencyRegistry:DependencyRegistry?
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        AppDelegate.dependencyRegistry = DependencyRegistry(with: SwinjectStoryboard.defaultContainer)
+
         return true
     }
 
