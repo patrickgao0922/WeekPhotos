@@ -16,6 +16,7 @@ struct GalaryResponse:Codable {
 
 struct Galary:Codable{
     var id:String?
+    var title:String?
     var date:Date?
     var images:[Image]?
     var topicId: Int?
@@ -24,6 +25,7 @@ struct Galary:Codable{
     
     enum CodingKeys:String, CodingKey {
         case id
+        case title
         case images
         case points
         case score

@@ -10,7 +10,7 @@ import Foundation
 import Swinject
 
 class DependencyRegistry {
-    var container:Container
+    fileprivate var container:Container
     
     init(with container:Container) {
         self.container = container
@@ -18,7 +18,7 @@ class DependencyRegistry {
         registerViewModels()
     }
     
-    func registerDependencies() {
+    private func registerDependencies() {
         container.register(ImgurNetworkLayer.self) { (r) in
             ImgurNetworkLayerImplementation()
         }
@@ -32,9 +32,21 @@ class DependencyRegistry {
         }
     }
     
-    func registerViewModels() {
+    private func registerViewModels() {
         container.register(GalaryTableViewModel.self) { (r) in
             GalaryTableViewModelImplementation(with: r.resolve(ImgurModelLayer.self)!)
         }
+        
+//        Galary
+        container.register(GalaryTableViewCellViewModel.self) { (r, galary) in
+            GalaryTableViewCellViewModelImplementation(with: galary)
+        }
+    }
+}
+
+// Factory Methods
+extension DependencyRegistry {
+    func makeGalaryTableViewCellViewModel(with galary:Galary) -> GalaryTableViewCellViewModel {
+        return container.resolve(GalaryTableViewCellViewModel.self, argument: galary)!
     }
 }
