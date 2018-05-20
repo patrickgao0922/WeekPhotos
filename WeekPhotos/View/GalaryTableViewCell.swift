@@ -30,7 +30,15 @@ class GalaryTableViewCell: UITableViewCell {
     func config(with viewModel:GalaryTableViewCellViewModel) {
         self.viewModel = viewModel
         self.titleLabel.text = self.viewModel.title
+        self.dateLabel.text = self.viewModel.dateString
 //        self.additionalImageCountLabel.text = self.viewModel.additionalImageCount
+        
+        if viewModel.additionalImageCount != 0 {
+            additionalImageCountLabel.isHidden = false
+            additionalImageCountLabel.text = "\(viewModel.additionalImageCount) more images"
+        } else {
+            additionalImageCountLabel.isHidden = true
+        }
     }
 
 }

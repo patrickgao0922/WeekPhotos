@@ -34,12 +34,16 @@ class DependencyRegistry {
     
     private func registerViewModels() {
         container.register(GalaryTableViewModel.self) { (r) in
-            GalaryTableViewModelImplementation(with: r.resolve(ImgurModelLayer.self)!,cellViewModelMaker:self.makeGalaryTableViewCellViewModel(with:))
+            GalaryTableViewModelImplementation(with: r.resolve(ImgurModelLayer.self)!,cellViewModelMaker:self.makeGalaryTableViewCellViewModel(with:dateFormatter:))
         }
         
 //        Galary table view cell view model
-        container.register(GalaryTableViewCellViewModel.self) { (r, galary) in
-            GalaryTableViewCellViewModelImplementation(with: galary)
+//        container.register(GalaryTableViewCellViewModel.self) { (r, galary, dateFormatter) in
+//            GalaryTableViewCellViewModelImplementation(with: galary)
+//        }
+        
+        container.register(GalaryTableViewCellViewModel.self) { (r, galary, dateFormatter)  in
+            GalaryTableViewCellViewModelImplementation(with: galary, dateFormatter: dateFormatter)
         }
     }
 }
@@ -47,11 +51,14 @@ class DependencyRegistry {
 // Factory Methods
 extension DependencyRegistry {
     
-    typealias GalaryTableViewCellViewModleMaker = (Galary) -> GalaryTableViewCellViewModel
-    func makeGalaryTableViewCellViewModel(with galary:Galary) -> GalaryTableViewCellViewModel {
-        return container.resolve(GalaryTableViewCellViewModel.self, argument: galary)!
+    /// Cell view model maker function
+    typealias GalaryTableViewCellViewModleMaker = (Galary,DateFormatter) -> GalaryTableViewCellViewModel
+    func makeGalaryTableViewCellViewModel(with galary:Galary,dateFormatter:DateFormatter) -> GalaryTableViewCellViewModel {
+//        return container.resolve(GalaryTableViewCellViewModel.self, argument: galary)!
+        return container.resolve(GalaryTableViewCellViewModel.self, arguments: galary, dateFormatter)!
     }
     
+    /// Table view cell maker function
     typealias  GalaryTableViewCellMaker = (UITableView,IndexPath,GalaryTableViewCellViewModel) -> GalaryTableViewCell
     func makeGalaryTableViewCell(for tableView:UITableView, at indexPath:IndexPath, with cellViewModel:GalaryTableViewCellViewModel) -> GalaryTableViewCell{
         let cellIdentifier = "galaryCell"

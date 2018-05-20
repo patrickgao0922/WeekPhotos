@@ -72,7 +72,10 @@ extension GalaryViewController {
 // MARK: - Setup Observables
 extension GalaryViewController {
     func setupObservable() {
-        self.searchController.searchBar.rx.text.asDriver().drive(viewModel.query)
+        self.searchController.searchBar.rx.text
+            .asDriver()
+            .throttle(0.3)
+            .drive(viewModel.query)
         
         self.viewModel.cellViewModels.asDriver().asObservable().subscribe(onNext: { (_) in
             self.tableView.reloadData()

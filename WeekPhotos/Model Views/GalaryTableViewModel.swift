@@ -29,6 +29,7 @@ class GalaryTableViewModelImplementation:GalaryTableViewModel {
     fileprivate var modelLayer:ImgurModelLayer
     
     fileprivate var disposeBag:DisposeBag
+    fileprivate var dateFormatter:DateFormatter
     
     fileprivate var cellViewModelMaker:DependencyRegistry.GalaryTableViewCellViewModleMaker
     
@@ -43,6 +44,10 @@ class GalaryTableViewModelImplementation:GalaryTableViewModel {
         toggleEnabled = Variable<Bool>(false)
         query = Variable<String?>(nil)
         
+        dateFormatter = DateFormatter()
+//        dateFormatter.locale = Locale.current
+        dateFormatter.dateFormat = "dd/MM/yyyy h:mm:ss a"
+        
         setupObservables()
     }
     
@@ -52,7 +57,7 @@ class GalaryTableViewModelImplementation:GalaryTableViewModel {
                 switch single {
                 case .success(let galaries):
                     self.cellViewModels.value = galaries.map({ (galary) -> GalaryTableViewCellViewModel in
-                        return self.cellViewModelMaker(galary)
+                        return self.cellViewModelMaker(galary,self.dateFormatter)
                     })
                 case .error(_):
                     break
