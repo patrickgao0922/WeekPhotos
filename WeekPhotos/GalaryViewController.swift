@@ -10,10 +10,11 @@ import UIKit
 import RxSwift
 import RxCocoa
 class GalaryViewController: UIViewController {
- 
+    
     
     @IBOutlet var tableView: UITableView!
-    @IBOutlet var toggle: UIBarButtonItem!
+    
+    @IBOutlet var toggle: UISwitch!
     fileprivate var viewModel:GalaryTableViewModel!
     fileprivate var disposeBag:DisposeBag!
     
@@ -26,17 +27,19 @@ class GalaryViewController: UIViewController {
         
         self.tableView.dataSource = self
         self.tableView.delegate  = self
+        disposeBag = DisposeBag()
+        
         setupUI()
         setupObservable()
         
-    
+        
     }
     
     func config(with viewModel:GalaryTableViewModel,cellMaker:@escaping DependencyRegistry.GalaryTableViewCellMaker) {
         self.cellMaker = cellMaker
         self.viewModel = viewModel
     }
-
+    
 }
 
 extension GalaryViewController:UITableViewDataSource {
@@ -76,10 +79,16 @@ extension GalaryViewController {
             .asDriver()
             .throttle(0.3)
             .drive(viewModel.query)
+            .disposed(by: disposeBag)
+        
+        self.toggle.rx.isOn
+            .asDriver()
+            .drive(viewModel.toggleEnabled)
+            .disposed(by: disposeBag)
         
         self.viewModel.cellViewModels.asDriver().asObservable().subscribe(onNext: { (_) in
             self.tableView.reloadData()
-        })
+        }).disposed(by: disposeBag)
     }
 }
 

@@ -22,6 +22,7 @@ class GalaryTableViewCellViewModelImplementation:GalaryTableViewCellViewModel{
     var dateString:String?
     var additionalImageCount:Int
     var imageSize:CGSize
+    
     fileprivate weak var dateFormatter:DateFormatter!
     
     init(with galary:Galary,dateFormatter:DateFormatter) {
@@ -45,6 +46,7 @@ class GalaryTableViewCellViewModelImplementation:GalaryTableViewCellViewModel{
         if let width = galary.images?[0].width, let height = galary.images?[0].height {
             self.imageSize = CGSize(width: width, height: height)
         }
+        
     }
 }
 

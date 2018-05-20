@@ -26,6 +26,8 @@ class GalaryTableViewModelImplementation:GalaryTableViewModel {
     //  Output: cell view models
     var cellViewModels:Variable<[GalaryTableViewCellViewModel]>
     
+    fileprivate var galaries:Variable<[Galary]>
+    
     fileprivate var modelLayer:ImgurModelLayer
     
     fileprivate var disposeBag:DisposeBag
@@ -36,6 +38,7 @@ class GalaryTableViewModelImplementation:GalaryTableViewModel {
     init(with modelLayer:ImgurModelLayer,cellViewModelMaker:@escaping DependencyRegistry.GalaryTableViewCellViewModleMaker) {
         self.modelLayer = modelLayer
         cellViewModels = Variable<[GalaryTableViewCellViewModel]>([])
+        galaries = Variable<[Galary]>([])
         self.cellViewModelMaker = cellViewModelMaker
         
         //        Setup observables
@@ -56,9 +59,7 @@ class GalaryTableViewModelImplementation:GalaryTableViewModel {
             .subscribe { (single) in
                 switch single {
                 case .success(let galaries):
-                    self.cellViewModels.value = galaries.map({ (galary) -> GalaryTableViewCellViewModel in
-                        return self.cellViewModelMaker(galary,self.dateFormatter)
-                    })
+                    self.galaries.value = galaries
                 case .error(_):
                     break
                 }
@@ -73,6 +74,39 @@ extension GalaryTableViewModelImplementation {
                 self.fetchGalaries(by: query)
             }
         }).disposed(by: disposeBag)
+        
+//        Combine galaries and toggle observable
+        Observable.combineLatest(galaries.asObservable(), toggleEnabled.asObservable()) { (galaries, toggleEnabled) -> (galaries:[Galary],toggleEnabled:Bool) in
+            return (galaries,toggleEnabled)
+        }
+            .subscribe(onNext: { (result) in
+                let galaries = result.galaries
+                let toggleEnabled = result.toggleEnabled
+                
+                self.cellViewModels.value = galaries
+                    .filter({ (galary) -> Bool in
+                        if toggleEnabled {
+                            var sum = 0
+                            if let points = galary.points {
+                                sum += points
+                            }
+                            if let topicId = galary.topicId {
+                                sum += topicId
+                            }
+                            
+                            if let score = galary.score {
+                                sum += score
+                            }
+                            return sum%2 == 0
+                        } else {
+                            return true
+                        }
+                    })
+                    .map({ (galary) -> GalaryTableViewCellViewModel in
+                        
+                        return self.cellViewModelMaker(galary,self.dateFormatter)
+                    })
+            }).disposed(by: disposeBag)
     }
 }
 
