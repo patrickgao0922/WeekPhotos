@@ -12,6 +12,7 @@
 		9664541020AD7A7D0015822B /* DependencyRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9664540F20AD7A7D0015822B /* DependencyRegistry.swift */; };
 		9664541120AD7C030015822B /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9664540C20AD79660015822B /* Configuration.swift */; };
 		9664541320AD7D2E0015822B /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9664540C20AD79660015822B /* Configuration.swift */; };
+		9687618720B1258D00C6E0D0 /* GalaryTableViewCellViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9687618620B1258D00C6E0D0 /* GalaryTableViewCellViewModelTests.swift */; };
 		9695926520AE3FFA00483EC7 /* ImgurDTOs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9695926420AE3FFA00483EC7 /* ImgurDTOs.swift */; };
 		9695926720AE442900483EC7 /* ImgurNetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9695926620AE442900483EC7 /* ImgurNetworkLayer.swift */; };
 		9695926820AE457F00483EC7 /* ImgurRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9664541620AD81150015822B /* ImgurRouter.swift */; };
@@ -56,6 +57,7 @@
 		9664540C20AD79660015822B /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		9664540F20AD7A7D0015822B /* DependencyRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyRegistry.swift; sourceTree = "<group>"; };
 		9664541620AD81150015822B /* ImgurRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgurRouter.swift; sourceTree = "<group>"; };
+		9687618620B1258D00C6E0D0 /* GalaryTableViewCellViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalaryTableViewCellViewModelTests.swift; sourceTree = "<group>"; };
 		9695926420AE3FFA00483EC7 /* ImgurDTOs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgurDTOs.swift; sourceTree = "<group>"; };
 		9695926620AE442900483EC7 /* ImgurNetworkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgurNetworkLayer.swift; sourceTree = "<group>"; };
 		9695926920AE4B6600483EC7 /* ImgurRouterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImgurRouterTests.swift; sourceTree = "<group>"; };
@@ -149,6 +151,14 @@
 				96EA2C1320AFBC220068628F /* JsonFile.swift */,
 			);
 			path = "Network Layer";
+			sourceTree = "<group>";
+		};
+		9687618520B1255B00C6E0D0 /* View Model */ = {
+			isa = PBXGroup;
+			children = (
+				9687618620B1258D00C6E0D0 /* GalaryTableViewCellViewModelTests.swift */,
+			);
+			path = "View Model";
 			sourceTree = "<group>";
 		};
 		9695926320AE3FDF00483EC7 /* DTOs */ = {
@@ -247,6 +257,7 @@
 		969E974220AD466E002F14C2 /* WeekPhotosTests */ = {
 			isa = PBXGroup;
 			children = (
+				9687618520B1255B00C6E0D0 /* View Model */,
 				9695927820AE7C6D00483EC7 /* Model Layer */,
 				9695927520AE6D4B00483EC7 /* Translation Layer */,
 				9695926C20AE566200483EC7 /* Network Layer */,
@@ -520,6 +531,7 @@
 				96EA2C1720AFBE8C0068628F /* JsonFileTests.swift in Sources */,
 				9695927A20AE7C8500483EC7 /* ImgurModelLayerTests.swift in Sources */,
 				969E974420AD466E002F14C2 /* WeekPhotosTests.swift in Sources */,
+				9687618720B1258D00C6E0D0 /* GalaryTableViewCellViewModelTests.swift in Sources */,
 				9695927720AE6D7900483EC7 /* ImgurTranslationLayerTests.swift in Sources */,
 				9695926A20AE4B6600483EC7 /* ImgurRouterTests.swift in Sources */,
 			);

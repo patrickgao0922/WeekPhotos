@@ -10,7 +10,7 @@ import Foundation
 import Swinject
 
 class DependencyRegistry {
-    fileprivate var container:Container
+    var container:Container
     
     init(with container:Container) {
         self.container = container
