@@ -11,31 +11,37 @@ import RxSwift
 import RxCocoa
 
 protocol GalaryTableViewModel {
-//    var galariesDriver: Driver<[Galary]> {get}
+    var toggleEnabled:Variable<Bool>{set get}
+    var query:Variable<String?>{set get}
+    
+    var cellViewModels:Variable<[GalaryTableViewCellViewModel]> {get}
     func fetchGalaries(by query:String)
 }
 
 class GalaryTableViewModelImplementation:GalaryTableViewModel {
     
-    fileprivate var cellViewModels:[GalaryTableViewCellViewModel]
+    //    Input
+    var toggleEnabled:Variable<Bool>
+    var query:Variable<String?>
+    //  Output: cell view models
+    var cellViewModels:Variable<[GalaryTableViewCellViewModel]>
+    
     fileprivate var modelLayer:ImgurModelLayer
-//    fileprivate var galaries:Variable<[Galary]>
     
     fileprivate var disposeBag:DisposeBag
     
     fileprivate var cellViewModelMaker:DependencyRegistry.GalaryTableViewCellViewModleMaker
     
-//    var galariesDriver: Driver<[Galary]>
-    
     init(with modelLayer:ImgurModelLayer,cellViewModelMaker:@escaping DependencyRegistry.GalaryTableViewCellViewModleMaker) {
         self.modelLayer = modelLayer
-//        galaries = Variable<[Galary]>([])
-        cellViewModels = []
+        cellViewModels = Variable<[GalaryTableViewCellViewModel]>([])
         self.cellViewModelMaker = cellViewModelMaker
         
-//        Setup observables
+        //        Setup observables
         disposeBag = DisposeBag()
-//        galariesDriver = galaries.asDriver()
+        
+        toggleEnabled = Variable<Bool>(false)
+        query = Variable<String?>(nil)
     }
     
     func fetchGalaries(by query:String) {
@@ -43,13 +49,17 @@ class GalaryTableViewModelImplementation:GalaryTableViewModel {
             .subscribe { (single) in
                 switch single {
                 case .success(let galaries):
-                    self.cellViewModels = galaries.map({ (galary) -> GalaryTableViewCellViewModel in
+                    self.cellViewModels.value = galaries.map({ (galary) -> GalaryTableViewCellViewModel in
                         return self.cellViewModelMaker(galary)
                     })
                 case .error(_):
                     break
                 }
-        }.disposed(by: disposeBag)
+            }.disposed(by: disposeBag)
     }
+}
+
+extension GalaryTableViewModelImplementation {
+   
 }
 

@@ -36,3 +36,9 @@ class GalaryTableViewCellViewModelImplementation:GalaryTableViewCellViewModel{
         }
     }
 }
+
+extension GalaryTableViewModelImplementation {
+    func setupObservables() {
+        
+    }
+}

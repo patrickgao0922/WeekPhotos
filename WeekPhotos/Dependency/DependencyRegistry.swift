@@ -52,6 +52,7 @@ extension DependencyRegistry {
         return container.resolve(GalaryTableViewCellViewModel.self, argument: galary)!
     }
     
+    typealias  GalaryTableViewCellMaker = (UITableView,IndexPath,GalaryTableViewCellViewModel) -> GalaryTableViewCell
     func makeGalaryTableViewCell(for tableView:UITableView, at indexPath:IndexPath, with cellViewModel:GalaryTableViewCellViewModel) -> GalaryTableViewCell{
         let cellIdentifier = "galaryCell"
         
@@ -60,4 +61,5 @@ extension DependencyRegistry {
         
         return cell
     }
+    
 }
