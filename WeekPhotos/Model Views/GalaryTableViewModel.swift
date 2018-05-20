@@ -45,7 +45,7 @@ class GalaryTableViewModelImplementation:GalaryTableViewModel {
         query = Variable<String?>(nil)
         
         dateFormatter = DateFormatter()
-//        dateFormatter.locale = Locale.current
+        dateFormatter.locale = Locale.current
         dateFormatter.dateFormat = "dd/MM/yyyy h:mm:ss a"
         
         setupObservables()

@@ -39,6 +39,20 @@ class GalaryTableViewCell: UITableViewCell {
         } else {
             additionalImageCountLabel.isHidden = true
         }
+        
+       self.applyImageSizeConstraints(size: viewModel.imageSize)
+    }
+    
+    fileprivate func applyImageSizeConstraints(size:CGSize) {
+        let width = self.bounds.size.width
+        
+        let factor = size.width / width
+        
+        let height = size.height / factor
+        
+        galaryImageView.heightAnchor.constraint(equalToConstant: height).isActive = true
+        galaryImageView.widthAnchor.constraint(equalToConstant: width).isActive = true
+        
     }
 
 }
