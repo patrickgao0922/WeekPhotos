@@ -51,4 +51,13 @@ extension DependencyRegistry {
     func makeGalaryTableViewCellViewModel(with galary:Galary) -> GalaryTableViewCellViewModel {
         return container.resolve(GalaryTableViewCellViewModel.self, argument: galary)!
     }
+    
+    func makeGalaryTableViewCell(for tableView:UITableView, at indexPath:IndexPath, with cellViewModel:GalaryTableViewCellViewModel) -> GalaryTableViewCell{
+        let cellIdentifier = "galaryCell"
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! GalaryTableViewCell
+        cell.config(with: cellViewModel)
+        
+        return cell
+    }
 }

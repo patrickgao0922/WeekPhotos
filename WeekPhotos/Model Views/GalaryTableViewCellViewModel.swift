@@ -8,7 +8,11 @@
 
 import Foundation
 
-protocol GalaryTableViewCellViewModel{}
+protocol GalaryTableViewCellViewModel{
+    var title:String? {get}
+    var date:Date? {get}
+    var additionalImageCount:Int {get}
+}
 
 class GalaryTableViewCellViewModelImplementation:GalaryTableViewCellViewModel{
     

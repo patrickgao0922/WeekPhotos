@@ -66,6 +66,12 @@
                                         <constraint firstItem="JWV-H9-3k7" firstAttribute="leading" secondItem="qRX-U7-wdM" secondAttribute="leadingMargin" id="idG-wF-KtA"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="additionalImageCountLabel" destination="pNu-LJ-ghV" id="xZ7-iJ-7eI"/>
+                                    <outlet property="dateLabel" destination="cr8-gj-dxU" id="IC3-Dj-X3L"/>
+                                    <outlet property="galaryImageView" destination="3Ds-Tm-OQB" id="Y2r-IX-2v3"/>
+                                    <outlet property="titleLabel" destination="GAV-Ds-l30" id="aee-Ys-hzu"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                     </tableView>

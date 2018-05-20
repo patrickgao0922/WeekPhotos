@@ -9,7 +9,13 @@
 import UIKit
 
 class GalaryTableViewCell: UITableViewCell {
+    
+    fileprivate var viewModel:GalaryTableViewCellViewModel!
 
+    @IBOutlet var galaryImageView: UIImageView!
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var dateLabel: UILabel!
+    @IBOutlet var additionalImageCountLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -19,6 +25,12 @@ class GalaryTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func config(with viewModel:GalaryTableViewCellViewModel) {
+        self.viewModel = viewModel
+        self.titleLabel.text = self.viewModel.title
+//        self.additionalImageCountLabel.text = self.viewModel.additionalImageCount
     }
 
 }
