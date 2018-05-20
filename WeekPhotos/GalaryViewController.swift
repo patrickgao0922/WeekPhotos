@@ -7,23 +7,25 @@
 //
 
 import UIKit
-
+import RxSwift
+import RxCocoa
 class GalaryViewController: UIViewController {
  
     
     @IBOutlet var tableView: UITableView!
     @IBOutlet var toggle: UIBarButtonItem!
-    
+    fileprivate var viewModel:GalaryTableViewModel!
+    fileprivate var disposeBag:DisposeBag!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+    
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    func config(with viewModel:GalaryTableViewModel) {
+        self.viewModel = viewModel
     }
-
 
 }
 

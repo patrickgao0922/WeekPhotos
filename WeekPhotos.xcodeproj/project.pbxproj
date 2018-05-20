@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		96007D2720B00BC200F8E267 /* GalaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96007D2620B00BC200F8E267 /* GalaryTableViewCell.swift */; };
+		963BA06820B14D22001007DA /* GalaryTableViewModelImplementationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963BA06720B14D22001007DA /* GalaryTableViewModelImplementationTests.swift */; };
 		9664540A20AD792E0015822B /* ConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9664540920AD792E0015822B /* ConfigurationTests.swift */; };
 		9664541020AD7A7D0015822B /* DependencyRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9664540F20AD7A7D0015822B /* DependencyRegistry.swift */; };
 		9664541120AD7C030015822B /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9664540C20AD79660015822B /* Configuration.swift */; };
@@ -53,6 +54,7 @@
 		676096247D0A9E886CC7DBEA /* Pods-WeekPhotosTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeekPhotosTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeekPhotosTests/Pods-WeekPhotosTests.debug.xcconfig"; sourceTree = "<group>"; };
 		87534A488FE2246944E5F600 /* Pods-WeekPhotosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeekPhotosTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeekPhotosTests/Pods-WeekPhotosTests.release.xcconfig"; sourceTree = "<group>"; };
 		96007D2620B00BC200F8E267 /* GalaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalaryTableViewCell.swift; sourceTree = "<group>"; };
+		963BA06720B14D22001007DA /* GalaryTableViewModelImplementationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalaryTableViewModelImplementationTests.swift; sourceTree = "<group>"; };
 		9664540920AD792E0015822B /* ConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationTests.swift; sourceTree = "<group>"; };
 		9664540C20AD79660015822B /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		9664540F20AD7A7D0015822B /* DependencyRegistry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyRegistry.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				9687618620B1258D00C6E0D0 /* GalaryTableViewCellViewModelTests.swift */,
+				963BA06720B14D22001007DA /* GalaryTableViewModelImplementationTests.swift */,
 			);
 			path = "View Model";
 			sourceTree = "<group>";
@@ -534,6 +537,7 @@
 				9687618720B1258D00C6E0D0 /* GalaryTableViewCellViewModelTests.swift in Sources */,
 				9695927720AE6D7900483EC7 /* ImgurTranslationLayerTests.swift in Sources */,
 				9695926A20AE4B6600483EC7 /* ImgurRouterTests.swift in Sources */,
+				963BA06820B14D22001007DA /* GalaryTableViewModelImplementationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

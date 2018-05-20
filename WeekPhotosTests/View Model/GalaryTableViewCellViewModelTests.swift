@@ -17,7 +17,13 @@ class GalaryTableViewCellViewModelImplementationTests:QuickSpec {
         var galary:Galary!
         beforeSuite {
             galary = Galary(id: "test", title: "test", date: Date(), images: [], topicId: 83, points: 93, score: 39)
+            
+        }
+        
+        it("Initialize view model for cell") {
             cellViewModel = GalaryTableViewCellViewModelImplementation(with: galary)
+            expect(cellViewModel.title).notTo(beNil())
+            expect(cellViewModel.title!).to(equal(galary.title!))
         }
     }
 }
