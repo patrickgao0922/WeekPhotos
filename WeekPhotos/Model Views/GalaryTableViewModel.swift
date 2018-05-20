@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 
 protocol GalaryTableViewModel {
-    var galariesDriver: Driver<[Galary]> {get}
+//    var galariesDriver: Driver<[Galary]> {get}
     func fetchGalaries(by query:String)
 }
 
@@ -19,20 +19,23 @@ class GalaryTableViewModelImplementation:GalaryTableViewModel {
     
     fileprivate var cellViewModels:[GalaryTableViewCellViewModel]
     fileprivate var modelLayer:ImgurModelLayer
-    fileprivate var galaries:Variable<[Galary]>
+//    fileprivate var galaries:Variable<[Galary]>
     
     fileprivate var disposeBag:DisposeBag
     
-    var galariesDriver: Driver<[Galary]>
+    fileprivate var cellViewModelMaker:DependencyRegistry.GalaryTableViewCellViewModleMaker
     
-    init(with modelLayer:ImgurModelLayer) {
+//    var galariesDriver: Driver<[Galary]>
+    
+    init(with modelLayer:ImgurModelLayer,cellViewModelMaker:@escaping DependencyRegistry.GalaryTableViewCellViewModleMaker) {
         self.modelLayer = modelLayer
-        galaries = Variable<[Galary]>([])
+//        galaries = Variable<[Galary]>([])
         cellViewModels = []
+        self.cellViewModelMaker = cellViewModelMaker
         
 //        Setup observables
         disposeBag = DisposeBag()
-        galariesDriver = galaries.asDriver()
+//        galariesDriver = galaries.asDriver()
     }
     
     func fetchGalaries(by query:String) {
@@ -40,7 +43,9 @@ class GalaryTableViewModelImplementation:GalaryTableViewModel {
             .subscribe { (single) in
                 switch single {
                 case .success(let galaries):
-                    self.galaries.value = galaries
+                    self.cellViewModels = galaries.map({ (galary) -> GalaryTableViewCellViewModel in
+                        return self.cellViewModelMaker(galary)
+                    })
                 case .error(_):
                     break
                 }

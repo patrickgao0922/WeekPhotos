@@ -34,10 +34,10 @@ class DependencyRegistry {
     
     private func registerViewModels() {
         container.register(GalaryTableViewModel.self) { (r) in
-            GalaryTableViewModelImplementation(with: r.resolve(ImgurModelLayer.self)!)
+            GalaryTableViewModelImplementation(with: r.resolve(ImgurModelLayer.self)!,cellViewModelMaker:self.makeGalaryTableViewCellViewModel(with:))
         }
         
-//        Galary
+//        Galary table view cell view model
         container.register(GalaryTableViewCellViewModel.self) { (r, galary) in
             GalaryTableViewCellViewModelImplementation(with: galary)
         }
@@ -46,6 +46,8 @@ class DependencyRegistry {
 
 // Factory Methods
 extension DependencyRegistry {
+    
+    typealias GalaryTableViewCellViewModleMaker = (Galary) -> GalaryTableViewCellViewModel
     func makeGalaryTableViewCellViewModel(with galary:Galary) -> GalaryTableViewCellViewModel {
         return container.resolve(GalaryTableViewCellViewModel.self, argument: galary)!
     }
