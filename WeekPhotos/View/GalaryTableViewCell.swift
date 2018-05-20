@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import SwiftyGif
 
 class GalaryTableViewCell: UITableViewCell {
     
@@ -41,6 +42,7 @@ class GalaryTableViewCell: UITableViewCell {
         disposeBag = DisposeBag()
 //        self.additionalImageCountLabel.text = self.viewModel.additionalImageCount
         self.galaryImageView.image = nil
+        self.galaryImageView.gifImage = nil
         
         if viewModel.additionalImageCount != 0 {
             additionalImageCountLabel.isHidden = false
@@ -75,7 +77,17 @@ class GalaryTableViewCell: UITableViewCell {
 extension GalaryTableViewCell {
     func setupObservables() {
         imageDownloadSub = viewModel.image.asDriver().asObservable().subscribe(onNext: { (image) in
-            self.galaryImageView.image = image
+            if let imageType = self.viewModel.imageType {
+                if imageType.contains("gif"),let image = image {
+                    self.galaryImageView.setGifImage(image)
+                }
+                else {
+                    self.galaryImageView.image = image
+                }
+            } else {
+                self.galaryImageView.image = image
+            }
+
         })
         
         imageDownloadSub?.disposed(by: disposeBag)

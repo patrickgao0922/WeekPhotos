@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import SwiftyGif
 
 protocol GalaryTableViewCellViewModel{
     var imageSize:CGSize {get}
@@ -15,6 +16,7 @@ protocol GalaryTableViewCellViewModel{
     var dateString:String? {get}
     var additionalImageCount:Int {get}
     var image:Variable<UIImage?> {get}
+    var imageType:String? {get}
     func startDownloadImage()
 }
 
@@ -27,6 +29,7 @@ class GalaryTableViewCellViewModelImplementation:GalaryTableViewCellViewModel{
     var imageSize:CGSize
     var imageDownloader:ImageDownloader
     var image:Variable<UIImage?>
+    var imageType:String?
     
     fileprivate var needDownloadImage:Bool
     
@@ -38,8 +41,13 @@ class GalaryTableViewCellViewModelImplementation:GalaryTableViewCellViewModel{
         self.galary = galary
         self.dateFormatter = dateFormatter
         self.imageDownloader = imageDownloader
+        self.imageType = nil
         title = galary.title
         image = Variable<UIImage?>(nil)
+        
+        if galary.images?[0].type != nil {
+            self.imageType = galary.images![0].type
+        }
         
         if let date = galary.date {
             dateString = dateFormatter.string(from: date)
@@ -77,7 +85,22 @@ class GalaryTableViewCellViewModelImplementation:GalaryTableViewCellViewModel{
             imageDownloader.downloadImage(urlString: imageURL, imageHash: imageHash).subscribe { (single) in
                 switch single {
                 case .success(let path):
-                    self.image.value = UIImage(contentsOfFile: path)
+                    
+                    if self.imageType != nil {
+                        let url = URL(fileURLWithPath: path)
+                        if let data = try? Data(contentsOf: url) {
+                            if self.imageType!.contains("gif") {
+                                self.image.value = UIImage(gifData: data)
+                            }
+                            else {
+                                self.image.value = UIImage(data: data)
+                            }
+                        }
+                        
+                    } else {
+                        self.image.value = UIImage(contentsOfFile: path)
+                    }
+                    
                 case .error(_):
                     self.image.value = nil
                 }

@@ -17,7 +17,7 @@ target 'WeekPhotos' do
   pod 'Moya/RxSwift'
   
   # Gif
-  
+  pod 'SwiftyGif'
 
 
   def testing_pods
