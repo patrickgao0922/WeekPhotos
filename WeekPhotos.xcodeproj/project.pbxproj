@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		96007D2720B00BC200F8E267 /* GalaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96007D2620B00BC200F8E267 /* GalaryTableViewCell.swift */; };
 		962B302A20B1760F00ACF0D6 /* SwinjectStoryboard+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962B302920B1760F00ACF0D6 /* SwinjectStoryboard+Extension.swift */; };
+		962B302C20B1893100ACF0D6 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 962B302B20B1893100ACF0D6 /* ImageDownloader.swift */; };
 		963BA06820B14D22001007DA /* GalaryTableViewModelImplementationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 963BA06720B14D22001007DA /* GalaryTableViewModelImplementationTests.swift */; };
 		9664540A20AD792E0015822B /* ConfigurationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9664540920AD792E0015822B /* ConfigurationTests.swift */; };
 		9664541020AD7A7D0015822B /* DependencyRegistry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9664540F20AD7A7D0015822B /* DependencyRegistry.swift */; };
@@ -56,6 +57,7 @@
 		87534A488FE2246944E5F600 /* Pods-WeekPhotosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeekPhotosTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeekPhotosTests/Pods-WeekPhotosTests.release.xcconfig"; sourceTree = "<group>"; };
 		96007D2620B00BC200F8E267 /* GalaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalaryTableViewCell.swift; sourceTree = "<group>"; };
 		962B302920B1760F00ACF0D6 /* SwinjectStoryboard+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwinjectStoryboard+Extension.swift"; sourceTree = "<group>"; };
+		962B302B20B1893100ACF0D6 /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		963BA06720B14D22001007DA /* GalaryTableViewModelImplementationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalaryTableViewModelImplementationTests.swift; sourceTree = "<group>"; };
 		9664540920AD792E0015822B /* ConfigurationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationTests.swift; sourceTree = "<group>"; };
 		9664540C20AD79660015822B /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 				9664541620AD81150015822B /* ImgurRouter.swift */,
 				9695926620AE442900483EC7 /* ImgurNetworkLayer.swift */,
 				96EA2C1320AFBC220068628F /* JsonFile.swift */,
+				962B302B20B1893100ACF0D6 /* ImageDownloader.swift */,
 			);
 			path = "Network Layer";
 			sourceTree = "<group>";
@@ -512,6 +515,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				96EA2C1420AFBC220068628F /* JsonFile.swift in Sources */,
+				962B302C20B1893100ACF0D6 /* ImageDownloader.swift in Sources */,
 				9695927420AE647100483EC7 /* ImgurTranslationLayer.swift in Sources */,
 				9695926720AE442900483EC7 /* ImgurNetworkLayer.swift in Sources */,
 				9695927120AE5BE900483EC7 /* ImgurModelLayer.swift in Sources */,
