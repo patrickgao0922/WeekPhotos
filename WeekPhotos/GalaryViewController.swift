@@ -60,7 +60,21 @@ extension GalaryViewController:UITableViewDataSource {
 }
 
 extension GalaryViewController:UITableViewDelegate {
-    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        startDownloadImagesOnScreen()
+    }
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if !decelerate {
+            startDownloadImagesOnScreen()
+        }
+    }
+    func startDownloadImagesOnScreen() {
+        guard let paths = tableView.indexPathsForVisibleRows else {
+            return
+        }
+        
+        viewModel.startDownloadImage(at: paths)
+    }
 }
 
 // MARK: - UI

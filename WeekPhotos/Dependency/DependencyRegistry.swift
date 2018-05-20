@@ -21,15 +21,19 @@ class DependencyRegistry {
     private func registerDependencies() {
         container.register(ImgurNetworkLayer.self) { (r) in
             ImgurNetworkLayerImplementation()
-        }
+        }.inObjectScope(.container)
         
         container.register(ImgurTranslationLayer.self) { (r) in
             ImgurTranslationLayerImplementation()
-        }
+        }.inObjectScope(.container)
         
         container.register(ImgurModelLayer.self) { (r) in
             ImgurModelLayerImplementation(with: r.resolve(ImgurNetworkLayer.self)!, translationLayer: r.resolve(ImgurTranslationLayer.self)!)
-        }
+        }.inObjectScope(.container)
+        
+        container.register(ImageDownloader.self) { (r) in
+            ImageDownloaderImplementation()
+            }.inObjectScope(.container)
     }
     
     private func registerViewModels() {
@@ -43,7 +47,7 @@ class DependencyRegistry {
 //        }
         
         container.register(GalaryTableViewCellViewModel.self) { (r, galary, dateFormatter)  in
-            GalaryTableViewCellViewModelImplementation(with: galary, dateFormatter: dateFormatter)
+            GalaryTableViewCellViewModelImplementation(with: galary, dateFormatter: dateFormatter, imageDownloader: r.resolve(ImageDownloader.self)!)
         }
     }
 }

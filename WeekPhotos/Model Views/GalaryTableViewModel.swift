@@ -16,6 +16,7 @@ protocol GalaryTableViewModel {
     
     var cellViewModels:Variable<[GalaryTableViewCellViewModel]> {get}
     func fetchGalaries(by query:String)
+    func startDownloadImage(at paths: [IndexPath])
 }
 
 class GalaryTableViewModelImplementation:GalaryTableViewModel {
@@ -64,6 +65,12 @@ class GalaryTableViewModelImplementation:GalaryTableViewModel {
                     break
                 }
             }.disposed(by: disposeBag)
+    }
+    
+    func startDownloadImage(at paths: [IndexPath]) {
+        for indexPath in paths {
+            cellViewModels.value[indexPath.row].startDownloadImage()
+        }
     }
 }
 

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 class GalaryTableViewCell: UITableViewCell {
     
@@ -16,6 +17,9 @@ class GalaryTableViewCell: UITableViewCell {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var additionalImageCountLabel: UILabel!
+    fileprivate var disposeBag:DisposeBag!
+    
+    fileprivate var imageDownloadSub:Disposable?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -29,10 +33,12 @@ class GalaryTableViewCell: UITableViewCell {
     
     func config(with viewModel:GalaryTableViewCellViewModel) {
         self.viewModel = viewModel
+        imageDownloadSub?.dispose()
         self.titleLabel.text = self.viewModel.title
         self.dateLabel.text = self.viewModel.dateString
+        disposeBag = DisposeBag()
 //        self.additionalImageCountLabel.text = self.viewModel.additionalImageCount
-        
+        self.galaryImageView.image = nil
         if viewModel.additionalImageCount != 0 {
             additionalImageCountLabel.isHidden = false
             additionalImageCountLabel.text = "\(viewModel.additionalImageCount) more images"
@@ -41,6 +47,7 @@ class GalaryTableViewCell: UITableViewCell {
         }
         
        self.applyImageSizeConstraints(size: viewModel.imageSize)
+        setupObservables()
     }
     
     fileprivate func applyImageSizeConstraints(size:CGSize) {
@@ -54,5 +61,20 @@ class GalaryTableViewCell: UITableViewCell {
         galaryImageView.widthAnchor.constraint(equalToConstant: width).isActive = true
         
     }
+    
+    func startDownloadImage() {
+        viewModel.startDownloadImage()
+    }
 
+}
+
+extension GalaryTableViewCell {
+    func setupObservables() {
+        imageDownloadSub = viewModel.image.asDriver().asObservable().subscribe(onNext: { (image) in
+            self.galaryImageView.image = image
+        })
+        
+        imageDownloadSub?.disposed(by: disposeBag)
+        
+    }
 }
