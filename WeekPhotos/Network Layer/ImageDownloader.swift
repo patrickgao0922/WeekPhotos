@@ -23,6 +23,7 @@ enum HTTPError:Error{
 }
 
 class ImageDownloaderImplementation:ImageDownloader {
+    let dispatchQueue = DispatchQueue(label: "com.patrickgao.WeekPhotos")
     /// Download image and return the location of the image where it is stored
     ///
     /// - Parameter url: image url string
@@ -45,8 +46,8 @@ class ImageDownloaderImplementation:ImageDownloader {
             if self.imageExists(fileURL: fileURL){
                 single(.success(fileURL.path))
             }else {
-                let dispatchQueue = DispatchQueue(label: "com.patrickgao.WeekPhotos")
-                dispatchQueue.async {
+                
+                self.dispatchQueue.async {
                     download(url, method: .get, to:destination)
                         .responseData(completionHandler: { (response) in
                             
