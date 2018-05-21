@@ -81,6 +81,7 @@ extension GalaryViewController:UITableViewDelegate {
 extension GalaryViewController {
     func setupUI() {
         searchController = UISearchController(searchResultsController: nil)
+        searchController.dimsBackgroundDuringPresentation = false
         self.navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
     }
@@ -91,7 +92,7 @@ extension GalaryViewController {
     func setupObservable() {
         self.searchController.searchBar.rx.text
             .asDriver()
-            .throttle(0.3)
+            .throttle(0.6)
             .drive(viewModel.query)
             .disposed(by: disposeBag)
         

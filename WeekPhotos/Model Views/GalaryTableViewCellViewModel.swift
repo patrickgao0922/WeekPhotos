@@ -75,6 +75,14 @@ class GalaryTableViewCellViewModelImplementation:GalaryTableViewCellViewModel{
             
             if let link = firstImage.link {
                 self.imageLink = link
+                
+                
+            }
+            
+            if let type = firstImage.type,type.contains("gif") || type.contains("mp4"){
+                if let gifv = firstImage.gifv {
+                    self.imageLink = gifv
+                }
             }
             self.imageId = firstImage.id
         } else if let imageType = self.galary.type {
@@ -87,6 +95,12 @@ class GalaryTableViewCellViewModelImplementation:GalaryTableViewCellViewModel{
                 
                 self.imageLink = link
                 self.imageId = self.galary.id
+            }
+            
+            if let type = self.galary.type,type.contains("gif") || type.contains("mp4"){
+                if let gifv = self.galary.gifv {
+                    self.imageLink = gifv
+                }
             }
         }
         
@@ -108,9 +122,7 @@ class GalaryTableViewCellViewModelImplementation:GalaryTableViewCellViewModel{
                 needDownloadImage = false
                 return
             }
-            
-            
-            
+
             if needDownloadImage {
                 
                 let imagePath = imageDownloader.buildImagePath(imageHash: imageHash)

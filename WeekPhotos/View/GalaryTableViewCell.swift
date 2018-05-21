@@ -61,11 +61,9 @@ class GalaryTableViewCell: UITableViewCell {
         let factor = size.width / width
         
         let height = size.height / factor
-        
-        
+ 
         imageHeightConstraint.constant = height
-        //        galaryImageView.widthAnchor.constraint(equalToConstant: width).isActive = true
-        
+        self.layoutIfNeeded()
     }
     
     func startDownloadImage() {
