@@ -36,14 +36,18 @@ class GalaryTableViewCell: UITableViewCell {
     
     func config(with viewModel:GalaryTableViewCellViewModel) {
         self.viewModel = viewModel
+        disposeBag = DisposeBag()
+        
+        // Reset necessary properties before reuse the cell
         imageHeightConstraint.constant = 0
         imageDownloadSub?.dispose()
-        self.titleLabel.text = self.viewModel.title
-        self.dateLabel.text = self.viewModel.dateString
-        disposeBag = DisposeBag()
         let gifManager = SwiftyGifManager.defaultManager
         gifManager.deleteImageView(galaryImageView)
         self.galaryImageView.image = nil
+        
+        // Config cell
+        self.titleLabel.text = self.viewModel.title
+        self.dateLabel.text = self.viewModel.dateString
 
         if viewModel.additionalImageCount != 0 {
             additionalImageCountLabel.isHidden = false
@@ -72,21 +76,20 @@ class GalaryTableViewCell: UITableViewCell {
     
 }
 
+// MARK: - Setup Observables
 extension GalaryTableViewCell {
     func setupObservables() {
+        
+//        Listen image changes
         imageDownloadSub = viewModel.image.asDriver().asObservable().subscribe(onNext: { (image) in
             if let imageType = self.viewModel.imageType,imageType.contains("gif") {
                 if let image = image {
                     self.galaryImageView.setGifImage(image)
                 }
-                
             } else {
-
                 self.galaryImageView.image = image
             }
-            
         })
-        
         imageDownloadSub?.disposed(by: disposeBag)
         
     }
