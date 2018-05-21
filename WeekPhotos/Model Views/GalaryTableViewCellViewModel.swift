@@ -98,8 +98,8 @@ class GalaryTableViewCellViewModelImplementation:GalaryTableViewCellViewModel{
     }
     
     func startDownloadImage() {
-        if needDownloadImage {
-            
+        
+        if image.value == nil {
             guard let link = imageLink else {
                 needDownloadImage = false
                 return
@@ -109,27 +109,53 @@ class GalaryTableViewCellViewModelImplementation:GalaryTableViewCellViewModel{
                 return
             }
             
-            imageDownloader.downloadImage(urlString: link, imageHash: imageHash).subscribe { (single) in
-                switch single {
-                case .success(let path):
-                    
+            
+            
+            if needDownloadImage {
+                
+                let imagePath = imageDownloader.buildImagePath(imageHash: imageHash)
+                if imageDownloader.imageExists(imagePath: imagePath) {
+                    //                if let data = try? Data(contentsOf: imagePath) {
                     if let imageType = self.imageType, imageType.contains("gif") {
-                        let url = URL(fileURLWithPath: path)
-                        if let data = try? Data(contentsOf: url) {
+                        if let data = try? Data(contentsOf: imagePath) {
                             self.image.value = UIImage(gifData: data)
-                        } else {
-                            print("error")
+                            needDownloadImage = false
+                            return
                         }
                     } else {
-                        self.image.value = UIImage(contentsOfFile: path)
+                        self.image.value = UIImage(contentsOfFile: imagePath.path)
+                        needDownloadImage = false
+                        return
                     }
-                    self.needDownloadImage = false
                     
-                case .error(_):
-                    self.image.value = nil
                 }
-                }.disposed(by: disposeBag)
+                
+                //            }a
+                
+                imageDownloader.downloadImage(urlString: link, imageHash: imageHash).subscribe { (single) in
+                    switch single {
+                    case .success(let path):
+                        
+                        if let imageType = self.imageType, imageType.contains("gif") {
+                            let url = URL(fileURLWithPath: path)
+                            if let data = try? Data(contentsOf: url) {
+                                self.image.value = UIImage(gifData: data)
+                            } else {
+                                print("error")
+                            }
+                        } else {
+                            self.image.value = UIImage(contentsOfFile: path)
+                        }
+                        self.needDownloadImage = false
+                        
+                    case .error(_):
+                        self.image.value = nil
+                    }
+                    }.disposed(by: disposeBag)
+            }
         }
+        
+        
         
     }
 }

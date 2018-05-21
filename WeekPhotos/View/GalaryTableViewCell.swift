@@ -41,15 +41,10 @@ class GalaryTableViewCell: UITableViewCell {
         self.titleLabel.text = self.viewModel.title
         self.dateLabel.text = self.viewModel.dateString
         disposeBag = DisposeBag()
-        //        self.additionalImageCountLabel.text = self.viewModel.additionalImageCount
-//        if let imageType = self.viewModel.imageType,imageType.contains("gif"),let image = viewModel.image.value {
-//            self.galaryImageView.image = nil
-//            self.galaryImageView.setGifImage(image)
-//        } else {
-//            self.galaryImageView.gifImage = nil
-//            self.galaryImageView.image = viewModel.image.value
-//        }
-        
+        let gifManager = SwiftyGifManager.defaultManager
+        gifManager.deleteImageView(galaryImageView)
+        self.galaryImageView.image = nil
+
         if viewModel.additionalImageCount != 0 {
             additionalImageCountLabel.isHidden = false
             additionalImageCountLabel.text = "\(viewModel.additionalImageCount) more images"
@@ -82,11 +77,13 @@ class GalaryTableViewCell: UITableViewCell {
 extension GalaryTableViewCell {
     func setupObservables() {
         imageDownloadSub = viewModel.image.asDriver().asObservable().subscribe(onNext: { (image) in
-            if let imageType = self.viewModel.imageType,imageType.contains("gif"),let image = image {
-                self.galaryImageView.image = nil
-                self.galaryImageView.setGifImage(image)
+            if let imageType = self.viewModel.imageType,imageType.contains("gif") {
+                if let image = image {
+                    self.galaryImageView.setGifImage(image)
+                }
+                
             } else {
-                self.galaryImageView.gifImage = nil
+
                 self.galaryImageView.image = image
             }
             
