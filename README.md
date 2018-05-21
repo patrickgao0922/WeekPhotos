@@ -1,8 +1,10 @@
 # Configuration
 
-## Step 1. run pod install to install all necessary pods
+## Step 1. Install Necessary Dependencies
 
-## Step 2 Add Imgur client id  into Config.xcconfig file
+run pod install to install all necessary pods
+
+## Step 2 Configure Imgur Client ID for the project
 
 There is a config file template called Config_Temp.xcconfig in directory WeekPhotos/Conig Files/ .
 
@@ -10,4 +12,6 @@ Change that file name to Config.xcconfig and replace <IMGUR_CLIENT_ID> with imgu
 
 ## Step 3 WeekPhotos.xcworkspace to start the project
 
-## Make sure that the scheme is using debug configuration (Don't have to change)
+## Ohter things need to be paid attention
+
+Make sure that the scheme is using debug configuration (Don't have to change)
