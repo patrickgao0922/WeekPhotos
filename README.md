@@ -2,7 +2,13 @@
 
 ## Step 1. Install Necessary Dependencies
 
-run pod install to install all necessary pods
+Run
+
+```bash
+pod install
+```
+
+to install all necessary pods
 
 ## Step 2 Configure Imgur Client ID for the project
 
