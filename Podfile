@@ -15,7 +15,7 @@ target 'WeekPhotos' do
   pod 'RxCocoa'
   pod 'RxOptional'
   pod 'Moya/RxSwift'
-  
+  pod 'AlamofireNetworkActivityIndicator', '~> 2.2'
   # Gif
   pod 'SwiftyGif'
 

@@ -81,7 +81,8 @@ extension GalaryViewController:UITableViewDelegate {
 extension GalaryViewController {
     func setupUI() {
         searchController = UISearchController(searchResultsController: nil)
-        searchController.dimsBackgroundDuringPresentation = false
+//        searchController.dimsBackgroundDuringPresentation = false
+//        searchController
         self.navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
     }

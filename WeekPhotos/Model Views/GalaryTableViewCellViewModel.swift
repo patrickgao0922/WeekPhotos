@@ -78,12 +78,7 @@ class GalaryTableViewCellViewModelImplementation:GalaryTableViewCellViewModel{
                 
                 
             }
-            
-            if let type = firstImage.type,type.contains("gif") || type.contains("mp4"){
-                if let gifv = firstImage.gifv {
-                    self.imageLink = gifv
-                }
-            }
+
             self.imageId = firstImage.id
         } else if let imageType = self.galary.type {
             self.imageType = imageType
@@ -97,11 +92,6 @@ class GalaryTableViewCellViewModelImplementation:GalaryTableViewCellViewModel{
                 self.imageId = self.galary.id
             }
             
-            if let type = self.galary.type,type.contains("gif") || type.contains("mp4"){
-                if let gifv = self.galary.gifv {
-                    self.imageLink = gifv
-                }
-            }
         }
         
         disposeBag = DisposeBag()
@@ -141,9 +131,7 @@ class GalaryTableViewCellViewModelImplementation:GalaryTableViewCellViewModel{
                     }
                     
                 }
-                
-                //            }a
-                
+
                 imageDownloader.downloadImage(urlString: link, imageHash: imageHash).subscribe { (single) in
                     switch single {
                     case .success(let path):
@@ -166,14 +154,6 @@ class GalaryTableViewCellViewModelImplementation:GalaryTableViewCellViewModel{
                     }.disposed(by: disposeBag)
             }
         }
-        
-        
-        
-    }
-}
-
-extension GalaryTableViewCellViewModelImplementation {
-    func setupObservables() {
         
     }
 }

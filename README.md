@@ -6,7 +6,7 @@
 
 There is a config file template called Config_Temp.xcconfig in directory WeekPhotos/Conig Files/ .
 
-Change that file name to Config.xcconfig replace <IMGUR_CLIENT_ID> with imgur client id.
+Change that file name to Config.xcconfig and replace <IMGUR_CLIENT_ID> with imgur client id. (IMGUR_CLIENT_SECRET is not needed because the project only obtain the images)
 
 ## Step 3 WeekPhotos.xcworkspace to start the project
 
