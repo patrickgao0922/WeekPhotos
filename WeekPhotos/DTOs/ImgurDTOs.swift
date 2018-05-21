@@ -22,6 +22,13 @@ struct Galary:Codable{
     var topicId: Int?
     var points:Int?
     var score:Int?
+    var gifv:String?
+    
+//    Properties for entity with single media
+    var type: String?
+    var width: Int?
+    var height: Int?
+    var link:String?
     
     enum CodingKeys:String, CodingKey {
         case id
@@ -31,6 +38,12 @@ struct Galary:Codable{
         case score
         case topicId = "topic_id"
         case date = "datetime"
+        
+        case type
+        case width
+        case height
+        case link
+        case gifv
 
     }
 }
@@ -49,6 +62,7 @@ struct Image:Codable {
     var height: Int?
     var size: Int?
     var link: String?
+    var gifv:String?
     
     enum CodingKeys:String, CodingKey {
         case id
@@ -58,5 +72,6 @@ struct Image:Codable {
         case size
         case link
         case date = "datetime"
+        case gifv
     }
 }

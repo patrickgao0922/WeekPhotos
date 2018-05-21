@@ -39,16 +39,12 @@ class DependencyRegistry {
     private func registerViewModels() {
         container.register(GalaryTableViewModel.self) { (r) in
             GalaryTableViewModelImplementation(with: r.resolve(ImgurModelLayer.self)!,cellViewModelMaker:self.makeGalaryTableViewCellViewModel(with:dateFormatter:))
-        }
+        }.inObjectScope(.container)
         
-//        Galary table view cell view model
-//        container.register(GalaryTableViewCellViewModel.self) { (r, galary, dateFormatter) in
-//            GalaryTableViewCellViewModelImplementation(with: galary)
-//        }
         
         container.register(GalaryTableViewCellViewModel.self) { (r, galary, dateFormatter)  in
             GalaryTableViewCellViewModelImplementation(with: galary, dateFormatter: dateFormatter, imageDownloader: r.resolve(ImageDownloader.self)!)
-        }
+        }.inObjectScope(.transient)
     }
 }
 

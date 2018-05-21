@@ -109,6 +109,15 @@ extension GalaryTableViewModelImplementation {
                             return true
                         }
                     })
+                    .sorted(by: { (first, second) -> Bool in
+                        if first.date == nil {
+                            return false
+                        }
+                        if second.date == nil {
+                            return true
+                        }
+                        return first.date!>second.date!
+                    })
                     .map({ (galary) -> GalaryTableViewCellViewModel in
                         
                         return self.cellViewModelMaker(galary,self.dateFormatter)

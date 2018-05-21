@@ -8,11 +8,12 @@
 
 import UIKit
 import RxSwift
+import SwiftyGif
 
 class GalaryTableViewCell: UITableViewCell {
     
     fileprivate var viewModel:GalaryTableViewCellViewModel!
-
+    
     
     @IBOutlet var imageHeightConstraint: NSLayoutConstraint!
     @IBOutlet var galaryImageView: UIImageView!
@@ -26,30 +27,31 @@ class GalaryTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
     func config(with viewModel:GalaryTableViewCellViewModel) {
         self.viewModel = viewModel
+        imageHeightConstraint.constant = 0
         imageDownloadSub?.dispose()
         self.titleLabel.text = self.viewModel.title
         self.dateLabel.text = self.viewModel.dateString
         disposeBag = DisposeBag()
-//        self.additionalImageCountLabel.text = self.viewModel.additionalImageCount
+        let gifManager = SwiftyGifManager.defaultManager
+        gifManager.deleteImageView(galaryImageView)
         self.galaryImageView.image = nil
-        
+
         if viewModel.additionalImageCount != 0 {
             additionalImageCountLabel.isHidden = false
             additionalImageCountLabel.text = "\(viewModel.additionalImageCount) more images"
         } else {
             additionalImageCountLabel.isHidden = true
         }
-        
-       self.applyImageSizeConstraints(size: viewModel.imageSize)
+        self.applyImageSizeConstraints(size: viewModel.imageSize)
         setupObservables()
     }
     
@@ -59,23 +61,30 @@ class GalaryTableViewCell: UITableViewCell {
         let factor = size.width / width
         
         let height = size.height / factor
-        
-        
+ 
         imageHeightConstraint.constant = height
-//        galaryImageView.widthAnchor.constraint(equalToConstant: width).isActive = true
-        
+        self.layoutIfNeeded()
     }
     
     func startDownloadImage() {
         viewModel.startDownloadImage()
     }
-
+    
 }
 
 extension GalaryTableViewCell {
     func setupObservables() {
         imageDownloadSub = viewModel.image.asDriver().asObservable().subscribe(onNext: { (image) in
-            self.galaryImageView.image = image
+            if let imageType = self.viewModel.imageType,imageType.contains("gif") {
+                if let image = image {
+                    self.galaryImageView.setGifImage(image)
+                }
+                
+            } else {
+
+                self.galaryImageView.image = image
+            }
+            
         })
         
         imageDownloadSub?.disposed(by: disposeBag)
