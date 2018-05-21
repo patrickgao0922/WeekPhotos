@@ -91,13 +91,10 @@ class GalaryTableViewCellViewModelImplementation:GalaryTableViewCellViewModel{
                 self.imageLink = link
                 self.imageId = self.galary.id
             }
-            
         }
         
         disposeBag = DisposeBag()
-        
         needDownloadImage = true
-        
         
     }
     

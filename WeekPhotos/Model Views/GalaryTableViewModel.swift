@@ -28,10 +28,10 @@ class GalaryTableViewModelImplementation:GalaryTableViewModel {
     var cellViewModels:Variable<[GalaryTableViewCellViewModel]>
     
     fileprivate var galaries:Variable<[Galary]>
-    
     fileprivate var modelLayer:ImgurModelLayer
-    
     fileprivate var disposeBag:DisposeBag
+    
+//    date formatter that will be used by cell view model
     fileprivate var dateFormatter:DateFormatter
     
     fileprivate var cellViewModelMaker:DependencyRegistry.GalaryTableViewCellViewModleMaker

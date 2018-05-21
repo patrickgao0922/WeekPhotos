@@ -26,10 +26,7 @@ extension SwinjectStoryboard {
                 let vm  = r.resolve(GalaryTableViewModel.self)!
                 vc.config(with: vm, cellMaker: dependencyRegistry.makeGalaryTableViewCell(for:at:with:))
             }
-            
         }
-        
-        
         main()
     }
 }

@@ -12,17 +12,18 @@ import SwiftyGif
 
 class GalaryTableViewCell: UITableViewCell {
     
+//    Necessary properties
     fileprivate var viewModel:GalaryTableViewCellViewModel!
+    fileprivate var disposeBag:DisposeBag!
+    fileprivate var imageDownloadSub:Disposable?
     
-    
+//    UI Components
     @IBOutlet var imageHeightConstraint: NSLayoutConstraint!
     @IBOutlet var galaryImageView: UIImageView!
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var additionalImageCountLabel: UILabel!
-    fileprivate var disposeBag:DisposeBag!
     
-    fileprivate var imageDownloadSub:Disposable?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
