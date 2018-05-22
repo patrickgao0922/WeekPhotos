@@ -81,6 +81,7 @@ extension GalaryViewController:UITableViewDelegate {
 extension GalaryViewController {
     func setupUI() {
         searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.returnKeyType = .done
         self.navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
     }
@@ -91,7 +92,7 @@ extension GalaryViewController {
     func setupObservable() {
         self.searchController.searchBar.rx.text
             .asDriver()
-            .throttle(0.6)
+            .throttle(0.8)
             .drive(viewModel.query)
             .disposed(by: disposeBag)
         
@@ -104,6 +105,12 @@ extension GalaryViewController {
             self.tableView.reloadData()
             self.startDownloadImagesOnScreen()
         }).disposed(by: disposeBag)
+        
+        self.searchController.searchBar.rx.searchButtonClicked
+            .subscribe(onNext: { (_) in
+                self.searchController.isActive = false
+            })
+            .disposed(by: disposeBag)
     }
 }
 
